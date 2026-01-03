@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const SkillCard = ({ icon, name }) => (
     <motion.div
         className="skill-card"
-        whileHover={{ y: -5, borderColor: '#3b82f6', backgroundColor: 'rgba(255,255,255,0.1)' }}
+        whileHover={{ y: -5, borderColor: 'var(--accent-primary)', backgroundColor: 'rgba(255,255,255,0.08)' }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}

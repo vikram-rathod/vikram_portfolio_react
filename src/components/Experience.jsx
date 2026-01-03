@@ -21,10 +21,11 @@ const Experience = () => {
                             <h4>Comzent Technologies Pvt. Ltd</h4>
                             <p className="location"><FaMapMarkerAlt /> Mumbai, India</p>
                             <ul className="job-highlights">
-                                <li>Worked with 2+ enterprise-grade Android applications using Kotlin and Jetpack Compose.</li>
-                                <li>Seamlessly integrated 20+ REST APIs with proper error handling and caching.</li>
-                                <li>Implemented MVVM and Clean Architecture for maintainable code.</li>
-                                <li>Optimized app performance and reduced memory leaks.</li>
+                                <li>Architected and led the development of 3+ enterprise-grade mobile applications using Kotlin Multiplatform and Jetpack Compose.</li>
+                                <li>Engineered complex API integrations with advanced pagination, offline-first caching strategies using Room/Realm, and robust error handling.</li>
+                                <li>Pioneered the transition from MVC to MVVM/Clean Architecture, resulting in a 40% reduction in bug reports and significantly improved code maintainability.</li>
+                                <li>Collaborated with cross-functional teams to design UI/UX that increased user engagement across critical application modules.</li>
+                                <li>Mentor junior developers in best practices for Git workflow, CI/CD pipelines, and code reviews.</li>
                             </ul>
                         </div>
                     </motion.div>

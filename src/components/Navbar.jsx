@@ -31,6 +31,7 @@ const Navbar = () => {
                     <li><a href="#skills" onClick={() => setIsOpen(false)}>Skills</a></li>
                     <li><a href="#experience" onClick={() => setIsOpen(false)}>Experience</a></li>
                     <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
+                    <li><a href="https://www.canva.com/design/DAG409WH0Gs/i0xLy23FwPL-pfRj_aYVIQ/view" target="_blank" onClick={() => setIsOpen(false)}>Resume</a></li>
                     <li><a href="#contact" className="btn-primary" onClick={() => setIsOpen(false)}>Contact Me</a></li>
                 </ul>
                 <div className="hamburger" onClick={toggleMenu}>

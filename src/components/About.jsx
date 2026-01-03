@@ -15,23 +15,23 @@ const About = () => {
                         transition={{ duration: 0.5 }}
                     >
                         <p>
-                            I am a passionate <strong>Mobile Application Developer</strong> currently working at <strong>Comzent Technologies Pvt. Ltd</strong> in Mumbai, India.
+                            I am a visionary <strong>Mobile Solutions Architect</strong> dedicated to pushing the boundaries of mobile technology at <strong>Comzent Technologies Pvt. Ltd</strong>.
                         </p>
                         <p>
-                            With over a year of specialized experience, I focus on building robust, scalable applications using <strong>Android (Kotlin)</strong> and <strong>Flutter</strong>. I'm deeply committed to writing clean code, following modern architecture patterns like <strong>MVVM</strong> and <strong>Clean Architecture</strong>, and delivering exceptional user experiences.
+                            With over <strong>2 years of professional experience</strong>, I specialize in engineering high-performance, scalable mobile ecosystems using <strong>Kotlin, Jetpack Compose, and Flutter</strong>. My core philosophy centers on <strong>SOLID principles</strong>, <strong>Domain-Driven Design</strong>, and crafting pixel-perfect user journeys that drive business value.
                         </p>
                         <div className="about-stats">
                             <div className="stat-item">
                                 <h3>2+</h3>
-                                <p>Years Exp</p>
+                                <p>Years of Mastery</p>
                             </div>
                             <div className="stat-item">
-                                <h3>20+</h3>
-                                <p>APIs Integrated</p>
+                                <h3>25+</h3>
+                                <p>APIs Orchestrated</p>
                             </div>
                             <div className="stat-item">
-                                <h3>3+</h3>
-                                <p>Major Projects</p>
+                                <h3>5+</h3>
+                                <p>Strategic Deployments</p>
                             </div>
                         </div>
                     </motion.div>

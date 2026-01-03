@@ -12,8 +12,8 @@ const Contact = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2>Let's <span className="gradient-text">Collaborate</span></h2>
-                    <p>Open for Freelance Projects, Full-time Opportunities, and Mentorship.</p>
+                    <h2>Ready to <span className="gradient-text">Scale?</span></h2>
+                    <p>I'm currently available for strategic partnerships, high-impact consulting, and leadership roles in mobile engineering.</p>
                     <div className="contact-actions">
                         <a href="mailto:rathodvikramk382@gmail.com" className="btn-primary"><FaEnvelope /> Send Email</a>
                         <a href="https://wa.me/919921120829" className="btn-secondary"><FaWhatsapp /> WhatsApp</a>

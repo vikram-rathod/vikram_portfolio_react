@@ -35,24 +35,24 @@ const Projects = () => {
                 <div className="projects-grid">
 
                     <ProjectCard
-                        title="ProChat"
+                        title="ProChat Alpha"
                         icon={<FaComments />}
-                        desc="Real-time messaging platform designed for professional team communication with advanced group management."
-                        tags={['Kotlin', 'Jetpack Compose', 'Firebase', 'Hilt']}
+                        desc="Architected a high-concurrency real-time messaging ecosystem for corporate teams. Features end-to-end encryption, automated thread management, and optimized WebSocket communication."
+                        tags={['Kotlin', 'Coroutines', 'Firebase', 'Clean Architecture']}
                     />
 
                     <ProjectCard
-                        title="Steveo"
+                        title="Steveo Enterprise"
                         icon={<FaTasks />}
-                        desc="Smart task management solution with deadline tracking, calendar integration, and offline-first architecture."
-                        tags={['Kotlin', 'Room', 'WorkManager', 'Compose']}
+                        desc="Engineered an enterprise-grade resource management suite with sophisticated analytics, deadline optimization, and offline-first synchronization using Room and WorkManager."
+                        tags={['Jetpack Compose', 'MVVM', 'Room', 'Analytics']}
                     />
 
                     <ProjectCard
-                        title="Food Delivery App"
+                        title="Global Gourmet"
                         icon={<FaHamburger />}
-                        desc="Cross-platform food delivery solution for Android & iOS with real-time tracking and payment integration."
-                        tags={['Flutter', 'Dart', 'Firebase', 'Stripe']}
+                        desc="Developed a high-performance cross-platform food delivery engine. Implemented real-time logistics tracking, secure multi-currency payment gateways, and high-fidelity animations."
+                        tags={['Flutter', 'Dart', 'Stripe API', 'Google Maps']}
                     />
 
                 </div>
