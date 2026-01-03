@@ -21,11 +21,10 @@ FROM nginx:stable-alpine
 # Copy the build output from the builder stage
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Copy custom nginx config as a template
-COPY nginx.conf /etc/nginx/conf.d/config.template
+# Copy custom nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Default port to 80 if not provided
-ENV PORT=80
+# Standard port for web servers
+EXPOSE 80
 
-# Use a shell to substitute the port in the config template and start nginx
-CMD ["/bin/sh", "-c", "envsubst '${PORT}' < /etc/nginx/conf.d/config.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
+CMD ["nginx", "-g", "daemon off;"]
