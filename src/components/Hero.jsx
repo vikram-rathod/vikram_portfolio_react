@@ -1,26 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaArrowRight, FaDownload } from 'react-icons/fa';
 
 const Hero = () => {
     return (
         <section className="hero">
+            <div className="hero-glow"></div>
             <div className="container">
                 <motion.div
-                    className="hero-content"
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <span className="hero-badge">Architecting Mobile Excellence</span>
-                    <h1 className="gradient-text">
-                        Building Scalable <br /> Mobile Ecosystems.
+                    <div className="hero-badge">
+                        <span>Available for Strategic Roles</span>
+                    </div>
+                    <h1>
+                        <span className="gradient-text">Vikram Rathod.</span><br />
+                        <span style={{ color: 'var(--text-secondary)' }}>Mobile Architect.</span>
                     </h1>
                     <p className="hero-description">
-                        Senior Mobile Solutions Architect specializing in high-performance Android & Flutter applications with a focus on Clean Architecture and scalable engineering.
+                        I engineer high-fidelity, scalable mobile ecosystems at the intersection of complex business logic and exceptional user experience.
                     </p>
-                    <div className="hero-actions">
-                        <a href="#projects" className="btn btn-primary">Featured Work</a>
-                        <a href="https://www.canva.com/design/DAG409WH0Gs/i0xLy23FwPL-pfRj_aYVIQ/view" target="_blank" className="btn btn-secondary">Download CV</a>
+                    <div className="hero-actions" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                        <a href="#projects" className="btn btn-primary">
+                            View Missions <FaArrowRight style={{ fontSize: '0.8rem' }} />
+                        </a>
+                        <a href="https://www.canva.com/design/DAG409WH0Gs/i0xLy23FwPL-pfRj_aYVIQ/view" target="_blank" className="btn btn-secondary">
+                            Get Resume <FaDownload style={{ fontSize: '0.8rem' }} />
+                        </a>
                     </div>
                 </motion.div>
             </div>

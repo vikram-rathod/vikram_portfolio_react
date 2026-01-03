@@ -1,16 +1,28 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { SiKotlin, SiAndroid, SiFlutter, SiDart, SiFirebase, SiSqlite } from 'react-icons/si';
-import { FaJava, FaLayerGroup, FaNetworkWired, FaSyringe, FaProjectDiagram } from 'react-icons/fa';
+import { FaJava, FaLayerGroup, FaNetworkWired, FaSyringe, FaProjectDiagram, FaCubes, FaMobileAlt } from 'react-icons/fa';
 
-const SkillCard = ({ icon, name }) => (
-    <motion.div
-        className="skill-tag"
-        whileHover={{ transform: "translateY(-4px)", borderColor: "var(--primary)" }}
-    >
-        {icon}
-        <span>{name}</span>
-    </motion.div>
+const SkillCategory = ({ title, skills }) => (
+    <div className="bento-card" style={{ gridColumn: 'span 4' }}>
+        <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: 'var(--primary)' }}>{title}</h3>
+        <div className="tags">
+            {skills.map((skill, i) => (
+                <div key={i} className="skill-chip" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.75rem',
+                    background: 'rgba(255,255,255,0.02)',
+                    padding: '0.6rem 1rem',
+                    borderRadius: '1rem',
+                    border: '1px solid var(--border)',
+                    width: '100%'
+                }}>
+                    <span style={{ fontSize: '1.25rem' }}>{skill.icon}</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: '500', color: 'var(--text-primary)' }}>{skill.name}</span>
+                </div>
+            ))}
+        </div>
+    </div>
 );
 
 const Skills = () => {
@@ -18,31 +30,43 @@ const Skills = () => {
         <section id="skills" className="section" style={{ background: 'rgba(255,255,255,0.01)' }}>
             <div className="container">
                 <div className="section-header">
-                    <h2 className="gradient-text">Core Tech Stack</h2>
-                    <p>Specialized in building the next generation of mobile experiences.</p>
+                    <h2 className="section-title gradient-text">Tech Intel</h2>
+                    <p className="section-subtitle">A curated selection of the tools and frameworks I use to build world-class mobile software.</p>
                 </div>
 
-                <div style={{ marginBottom: '4rem' }}>
-                    <h3 style={{ marginBottom: '2rem', fontSize: '1.2rem', color: 'var(--primary)' }}>Mobile & Languages</h3>
-                    <div className="skills-list">
-                        <SkillCard icon={<SiAndroid style={{ color: '#3DDC84' }} />} name="Android" />
-                        <SkillCard icon={<SiKotlin style={{ color: '#7F52FF' }} />} name="Kotlin" />
-                        <SkillCard icon={<FaJava style={{ color: '#ED8B00' }} />} name="Java" />
-                        <SkillCard icon={<SiFlutter style={{ color: '#02569B' }} />} name="Flutter" />
-                        <SkillCard icon={<SiDart style={{ color: '#0175C2' }} />} name="Dart" />
-                    </div>
-                </div>
+                <div className="bento-grid">
+                    <SkillCategory
+                        title="Mobile & Core"
+                        skills={[
+                            { icon: <SiAndroid style={{ color: '#3DDC84' }} />, name: 'Android Native' },
+                            { icon: <SiKotlin style={{ color: '#7F52FF' }} />, name: 'Kotlin' },
+                            { icon: <FaJava style={{ color: '#ED8B00' }} />, name: 'Java' },
+                            { icon: <SiFlutter style={{ color: '#02569B' }} />, name: 'Flutter' },
+                            { icon: <SiDart style={{ color: '#0175C2' }} />, name: 'Dart' }
+                        ]}
+                    />
 
-                <div>
-                    <h3 style={{ marginBottom: '2rem', fontSize: '1.2rem', color: 'var(--primary)' }}>Architecture & Infrastructure</h3>
-                    <div className="skills-list">
-                        <SkillCard icon={<SiFirebase style={{ color: '#FFCA28' }} />} name="Firebase" />
-                        <SkillCard icon={<SiSqlite style={{ color: '#07405E' }} />} name="Room / SQL" />
-                        <SkillCard icon={<FaLayerGroup />} name="Jetpack Compose" />
-                        <SkillCard icon={<FaNetworkWired />} name="Retrofit" />
-                        <SkillCard icon={<FaSyringe />} name="Hilt / Dagger" />
-                        <SkillCard icon={<FaProjectDiagram />} name="MVVM / Clean Arch" />
-                    </div>
+                    <SkillCategory
+                        title="Architecture & Domain"
+                        skills={[
+                            { icon: <FaCubes />, name: 'Clean Architecture' },
+                            { icon: <FaProjectDiagram />, name: 'MVVM Pattern' },
+                            { icon: <FaSyringe />, name: 'Dependency Injection' },
+                            { icon: <FaLayerGroup />, name: 'Jetpack Compose' },
+                            { icon: <FaMobileAlt />, name: 'Modular Dev' }
+                        ]}
+                    />
+
+                    <SkillCategory
+                        title="Infrastructure & Backend"
+                        skills={[
+                            { icon: <SiFirebase style={{ color: '#FFCA28' }} />, name: 'Firebase / Auth' },
+                            { icon: <SiSqlite style={{ color: '#07405E' }} />, name: 'Room / SQLite' },
+                            { icon: <FaNetworkWired />, name: 'Retrofit / REST' },
+                            { icon: <SiAndroid />, name: 'WorkManager' },
+                            { icon: <SiAndroid />, name: 'Performance Auth' }
+                        ]}
+                    />
                 </div>
             </div>
         </section>

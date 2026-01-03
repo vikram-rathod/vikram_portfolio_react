@@ -1,86 +1,61 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGraduationCap, FaCode, FaRocket, FaUsers } from 'react-icons/fa';
 
 const About = () => {
     return (
-        <section id="about" className="section">
+        <section id="about" className="section" style={{ borderTop: '1px solid var(--border)' }}>
             <div className="container">
                 <div className="section-header">
-                    <h2 className="gradient-text">About Me</h2>
-                    <p>Merging complex business logic with exceptional user experience.</p>
+                    <h2 className="section-title gradient-text">About Me</h2>
+                    <p className="section-subtitle">A Senior Solutions Architect dedicated to pushing the boundaries of mobile technology.</p>
                 </div>
 
                 <div className="bento-grid">
-                    {/* Main Bio Card */}
-                    <motion.div
-                        className="bento-item col-span-2"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                    >
-                        <h3>Strategic Vision</h3>
-                        <p>
-                            With over 2 years of professional mastery at Comzent Technologies, I engineer high-fidelity mobile ecosystems that define the gold standard for technical excellence. My philosophy is rooted in SOLID principles and Domain-Driven Design.
+                    {/* Bio Card */}
+                    <div className="bento-card" style={{ gridColumn: 'span 8', gridRow: 'span 2' }}>
+                        <h3 style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>Strategic Vision</h3>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', lineHeight: '1.7' }}>
+                            Currently based in Mumbai and architecting at <strong>Comzent Technologies</strong>, I bridge the gap between complex engineering and human-centric design. With a focus on <strong>Kotlin, Jetpack Compose, and Flutter</strong>, I build ecosystems that are not just applications, but robust business assets.
                         </p>
-                        <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem' }}>
+                        <p style={{ color: 'var(--text-secondary)', marginTop: '1.5rem', fontSize: '1.125rem', lineHeight: '1.7' }}>
+                            My engineering philosophy is simple: write code that is as maintainable as it is performant. I strictly adhere to <strong>Clean Architecture</strong> and <strong>SOLID principles</strong> to ensure every project clears the highest technical hurdles.
+                        </p>
+                    </div>
+
+                    {/* Stats Card */}
+                    <div className="bento-card" style={{ gridColumn: 'span 4' }}>
+                        <h3 style={{ color: 'var(--primary)', fontSize: '3rem', marginBottom: '0.25rem' }}>2+</h3>
+                        <p style={{ fontWeight: '600', color: 'var(--text-primary)' }}>Years of Mastery</p>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginTop: '0.5rem' }}>Deep specialization in Android & Flutter architecture.</p>
+                    </div>
+
+                    {/* Strengths Card */}
+                    <div className="bento-card" style={{ gridColumn: 'span 4' }}>
+                        <h3 style={{ fontSize: '1.25rem', marginBottom: '1.25rem' }}>Core Strengths</h3>
+                        <div className="tags">
+                            <span className="tag-chip">System Architecture</span>
+                            <span className="tag-chip">Clean Code</span>
+                            <span className="tag-chip">MVVM</span>
+                            <span className="tag-chip">API Orchestration</span>
+                            <span className="tag-chip">Leadership</span>
+                            <span className="tag-chip">Unit Testing</span>
+                        </div>
+                    </div>
+
+                    {/* Education Card (Full Width on mobile, span on desktop) */}
+                    <div className="bento-card" style={{ gridColumn: 'span 12' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1rem' }}>
                             <div>
-                                <h4 style={{ color: 'var(--primary)', fontSize: '2rem' }}>2+</h4>
-                                <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Years Mastery</span>
+                                <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Academic Foundation</h3>
+                                <p style={{ color: 'var(--text-primary)', fontWeight: '600' }}>Master of Computer Applications (MCA)</p>
+                                <p style={{ color: 'var(--text-secondary)' }}>Sardar Patel Institute of Technology</p>
                             </div>
-                            <div>
-                                <h4 style={{ color: 'var(--primary)', fontSize: '2rem' }}>25+</h4>
-                                <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>APIs Launched</span>
+                            <div style={{ textAlign: 'right' }}>
+                                <p style={{ color: 'var(--primary)', fontWeight: '800', fontSize: '1.5rem' }}>8.0 CGPA</p>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>Class of 2024</p>
                             </div>
                         </div>
-                    </motion.div>
-
-                    {/* Education Card */}
-                    <motion.div
-                        className="bento-item"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                    >
-                        <FaGraduationCap style={{ fontSize: '2rem', color: 'var(--primary)', marginBottom: '1.5rem' }} />
-                        <h3>Education</h3>
-                        <p style={{ fontSize: '1.1rem', color: '#fff' }}>MCA</p>
-                        <p>Sardar Patel Institute of Technology</p>
-                        <p style={{ marginTop: '0.5rem', fontSize: '0.8rem' }}>CGPA: 8.0/10</p>
-                    </motion.div>
-
-                    {/* Philosophy Cards */}
-                    <motion.div
-                        className="bento-item"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                    >
-                        <FaCode style={{ marginBottom: '1rem', color: 'var(--primary)' }} />
-                        <h3>Clean Code</h3>
-                        <p>Adherence to MVVM and Clean Architecture patterns for maximum scalability.</p>
-                    </motion.div>
-
-                    <motion.div
-                        className="bento-item"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                    >
-                        <FaRocket style={{ marginBottom: '1rem', color: 'var(--primary)' }} />
-                        <h3>Performance</h3>
-                        <p>Optimizing for high-concurrency and offline-first synchronization.</p>
-                    </motion.div>
-
-                    <motion.div
-                        className="bento-item"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                    >
-                        <FaUsers style={{ marginBottom: '1rem', color: 'var(--primary)' }} />
-                        <h3>Leadership</h3>
-                        <p>Mentoring developers and pioneering strategic technology transitions.</p>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
