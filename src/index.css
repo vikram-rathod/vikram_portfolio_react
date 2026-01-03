@@ -135,6 +135,21 @@ body {
     background: radial-gradient(circle at 50% 30%, var(--primary-glow), transparent 60%);
     z-index: -1;
     pointer-events: none;
+    animation: pulseGlow 10s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translateX(-50%) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.1);
+    }
 }
 
 .hero-badge {

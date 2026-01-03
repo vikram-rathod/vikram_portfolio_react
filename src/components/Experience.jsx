@@ -5,50 +5,60 @@ const Experience = () => {
     return (
         <section id="experience" className="section" style={{ background: 'rgba(255,255,255,0.01)', borderTop: '1px solid var(--border)' }}>
             <div className="container" style={{ maxWidth: '800px' }}>
-                <div className="section-header" style={{ marginBottom: '6rem' }}>
+                <motion.div
+                    className="section-header"
+                    style={{ marginBottom: '6rem' }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
                     <h2 className="section-title gradient-text">Professional Path</h2>
                     <p className="section-subtitle">A track record of driving technical excellence and high-impact deployments.</p>
-                </div>
+                </motion.div>
 
                 <div className="timeline-container">
                     <motion.div
                         className="timeline-item"
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <div style={{ marginBottom: '1rem' }}>
+                        <div style={{ marginBottom: '1.5rem' }}>
                             <h3 style={{ fontSize: '1.75rem', marginBottom: '0.25rem' }}>Mobile Application Developer</h3>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
                                 <span style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '1.1rem' }}>Comzent Technologies Pvt. Ltd</span>
                                 <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: '500' }}>Jan 2024 – Present</span>
                             </div>
                         </div>
                         <ul style={{ listStyle: 'none', color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.8' }}>
-                            <li style={{ marginBottom: '0.75rem', paddingLeft: '1.5rem', position: 'relative' }}>
-                                <span style={{ position: 'absolute', left: 0, color: 'var(--primary)' }}>•</span>
-                                Architecting and leading the development of enterprise-grade mobile applications using <strong>Kotlin Multiplatform</strong> and <strong>Jetpack Compose</strong>.
-                            </li>
-                            <li style={{ marginBottom: '0.75rem', paddingLeft: '1.5rem', position: 'relative' }}>
-                                <span style={{ position: 'absolute', left: 0, color: 'var(--primary)' }}>•</span>
-                                Engineered complex API integrations with advanced pagination and <strong>offline-first</strong> sync strategies.
-                            </li>
-                            <li style={{ marginBottom: '0.75rem', paddingLeft: '1.5rem', position: 'relative' }}>
-                                <span style={{ position: 'absolute', left: 0, color: 'var(--primary)' }}>•</span>
-                                Pioneered technical transitions to <strong>Clean Architecture</strong>, resulting in a 40% reduction in bug reports.
-                            </li>
-                            <li style={{ paddingLeft: '1.5rem', position: 'relative' }}>
-                                <span style={{ position: 'absolute', left: 0, color: 'var(--primary)' }}>•</span>
-                                Mentoring junior developers in high-fidelity code reviews and strategic Git workflows.
-                            </li>
+                            {[
+                                "Architecting and leading the development of enterprise-grade mobile applications using Kotlin Multiplatform and Jetpack Compose.",
+                                "Engineered complex API integrations with advanced pagination and offline-first sync strategies.",
+                                "Pioneered technical transitions to Clean Architecture, resulting in a 40% reduction in bug reports.",
+                                "Mentoring junior developers in high-fidelity code reviews and strategic Git workflows."
+                            ].map((item, i) => (
+                                <motion.li
+                                    key={i}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.3 + (i * 0.1) }}
+                                    style={{ marginBottom: '0.75rem', paddingLeft: '1.5rem', position: 'relative' }}
+                                >
+                                    <span style={{ position: 'absolute', left: 0, color: 'var(--primary)' }}>•</span>
+                                    {item}
+                                </motion.li>
+                            ))}
                         </ul>
                     </motion.div>
 
                     <motion.div
                         className="timeline-item"
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
                     >
                         <div style={{ marginBottom: '1rem' }}>
                             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>Previous Career Highlight</h3>

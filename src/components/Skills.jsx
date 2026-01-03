@@ -1,38 +1,80 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { SiKotlin, SiAndroid, SiFlutter, SiDart, SiFirebase, SiSqlite } from 'react-icons/si';
 import { FaJava, FaLayerGroup, FaNetworkWired, FaSyringe, FaProjectDiagram, FaCubes, FaMobileAlt } from 'react-icons/fa';
 
-const SkillCategory = ({ title, skills }) => (
-    <div className="bento-card" style={{ gridColumn: 'span 4' }}>
-        <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: 'var(--primary)' }}>{title}</h3>
-        <div className="tags">
-            {skills.map((skill, i) => (
-                <div key={i} className="skill-chip" style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                    background: 'rgba(255,255,255,0.02)',
-                    padding: '0.6rem 1rem',
-                    borderRadius: '1rem',
-                    border: '1px solid var(--border)',
-                    width: '100%'
-                }}>
-                    <span style={{ fontSize: '1.25rem' }}>{skill.icon}</span>
-                    <span style={{ fontSize: '0.875rem', fontWeight: '500', color: 'var(--text-primary)' }}>{skill.name}</span>
-                </div>
-            ))}
-        </div>
-    </div>
-);
+const SkillCategory = ({ title, skills, delay = 0 }) => {
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: delay
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, scale: 0.9 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+        }
+    };
+
+    return (
+        <motion.div
+            className="bento-card"
+            style={{ gridColumn: 'span 4' }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+        >
+            <h3 style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: 'var(--primary)' }}>{title}</h3>
+            <div className="tags">
+                {skills.map((skill, i) => (
+                    <motion.div
+                        key={i}
+                        className="skill-chip"
+                        variants={itemVariants}
+                        whileHover={{ y: -5, borderColor: 'var(--primary)', background: 'rgba(99, 102, 241, 0.05)' }}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.75rem',
+                            background: 'rgba(255,255,255,0.02)',
+                            padding: '0.6rem 1rem',
+                            borderRadius: '1rem',
+                            border: '1px solid var(--border)',
+                            width: '100%',
+                            cursor: 'default'
+                        }}
+                    >
+                        <span style={{ fontSize: '1.25rem' }}>{skill.icon}</span>
+                        <span style={{ fontSize: '0.875rem', fontWeight: '500', color: 'var(--text-primary)' }}>{skill.name}</span>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.div>
+    );
+};
 
 const Skills = () => {
     return (
         <section id="skills" className="section" style={{ background: 'rgba(255,255,255,0.01)' }}>
             <div className="container">
-                <div className="section-header">
+                <motion.div
+                    className="section-header"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
                     <h2 className="section-title gradient-text">Tech Intel</h2>
                     <p className="section-subtitle">A curated selection of the tools and frameworks I use to build world-class mobile software.</p>
-                </div>
+                </motion.div>
 
                 <div className="bento-grid">
                     <SkillCategory
@@ -48,6 +90,7 @@ const Skills = () => {
 
                     <SkillCategory
                         title="Architecture & Domain"
+                        delay={0.2}
                         skills={[
                             { icon: <FaCubes />, name: 'Clean Architecture' },
                             { icon: <FaProjectDiagram />, name: 'MVVM Pattern' },
@@ -59,6 +102,7 @@ const Skills = () => {
 
                     <SkillCategory
                         title="Infrastructure & Backend"
+                        delay={0.4}
                         skills={[
                             { icon: <SiFirebase style={{ color: '#FFCA28' }} />, name: 'Firebase / Auth' },
                             { icon: <SiSqlite style={{ color: '#07405E' }} />, name: 'Room / SQLite' },
