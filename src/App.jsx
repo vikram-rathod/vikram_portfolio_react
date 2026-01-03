@@ -11,13 +11,16 @@ import Footer from './components/Footer';
 function App() {
     return (
         <div className="app">
+            <div className="bg-nebula" />
             <Navbar />
-            <Hero />
-            <About />
-            <Skills />
-            <Experience />
-            <Projects />
-            <Contact />
+            <main>
+                <Hero />
+                <About />
+                <Skills />
+                <Experience />
+                <Projects />
+                <Contact />
+            </main>
             <Footer />
         </div>
     );

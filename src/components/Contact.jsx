@@ -1,74 +1,77 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Button from './ui/Button';
 import { FaEnvelope, FaWhatsapp, FaLinkedinIn, FaGithub } from 'react-icons/fa';
+
+const SocialLink = ({ icon, href, label }) => (
+    <motion.a
+        href={href}
+        target="_blank"
+        whileHover={{ y: -5, color: 'var(--accent)' }}
+        style={{ fontSize: '1.75rem', color: 'var(--text-dim)', transition: 'color 0.2s' }}
+        aria-label={label}
+    >
+        {icon}
+    </motion.a>
+);
 
 const Contact = () => {
     return (
-        <section id="contact" className="section" style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)' }}>
-            <div className="container">
+        <section id="contact" className="section container">
+            <div style={{
+                background: 'linear-gradient(180deg, var(--surface) 0%, transparent 100%)',
+                padding: '6rem 2rem',
+                borderRadius: 'var(--radius-lg)',
+                border: '1px solid var(--border)',
+                textAlign: 'center',
+                position: 'relative',
+                overflow: 'hidden'
+            }}>
                 <motion.div
-                    className="contact-holder"
-                    initial={{ opacity: 0, scale: 0.95, y: 30 }}
-                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    style={{
-                        maxWidth: '800px',
-                        margin: '0 auto',
-                        textAlign: 'center',
-                        background: 'radial-gradient(circle at 50% 100%, rgba(99, 102, 241, 0.08), transparent 70%)',
-                        padding: '6rem 2rem',
-                        borderRadius: '2rem',
-                        border: '1px solid var(--border)'
-                    }}
                 >
-                    <h2 className="section-title gradient-text" style={{ fontSize: '3.5rem', marginBottom: '1.5rem' }}>Ready to Scale?</h2>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.25rem', marginBottom: '3.5rem', maxWidth: '500px', margin: '0 auto 3.5rem' }}>
-                        I'm currently scouting for strategic partnerships and high-impact mobile leadership roles.
+                    <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontFamily: 'var(--font-display)', marginBottom: '1.5rem', lineHeight: 1 }}>
+                        Ready to <span className="gradient-text">Scale?</span>
+                    </h2>
+                    <p style={{ color: 'var(--text-dim)', fontSize: '1.25rem', marginBottom: '3.5rem', maxWidth: '600px', margin: '0 auto 3.5rem' }}>
+                        I'm currently scouting for high-impact mobile leadership roles and strategic engineering partnerships.
                     </p>
 
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '4rem' }}>
-                        <motion.a
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                            href="mailto:rathodvikramk382@gmail.com"
-                            className="btn btn-primary"
-                            style={{ padding: '1rem 2.5rem' }}
-                        >
-                            <FaEnvelope /> Send Mission Brief
-                        </motion.a>
-                        <motion.a
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                            href="https://wa.me/919921120829"
-                            className="btn btn-secondary"
-                            style={{ padding: '1rem 2.5rem' }}
-                        >
-                            <FaWhatsapp /> Quick Sync
-                        </motion.a>
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '4rem' }}>
+                        <Button href="mailto:rathodvikramk382@gmail.com" variant="primary" icon={<FaEnvelope />}>
+                            Draft Mission Brief
+                        </Button>
+                        <Button href="https://wa.me/919921120829" variant="outline" icon={<FaWhatsapp />}>
+                            Secure WhatsApp
+                        </Button>
                     </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', borderTop: '1px solid var(--border)', paddingTop: '3rem' }}>
-                        {[
-                            { icon: <FaLinkedinIn />, href: "https://www.linkedin.com/in/vikram-rathod-438442289/", label: "LinkedIn" },
-                            { icon: <FaGithub />, href: "https://github.com/VikramRathodk", label: "GitHub" },
-                            { icon: <FaEnvelope />, href: "mailto:rathodvikramk382@gmail.com", label: "Email" }
-                        ].map((link, i) => (
-                            <motion.a
-                                key={i}
-                                whileHover={{ y: -5, color: 'var(--text-primary)' }}
-                                href={link.href}
-                                target="_blank"
-                                className="social-link"
-                                style={{ color: 'var(--text-secondary)', fontSize: '1.5rem', transition: 'color 0.2s' }}
-                                aria-label={link.label}
-                            >
-                                {link.icon}
-                            </motion.a>
-                        ))}
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: '3rem',
+                        paddingTop: '3rem',
+                        borderTop: '1px solid var(--border)'
+                    }}>
+                        <SocialLink icon={<FaLinkedinIn />} href="https://www.linkedin.com/in/vikram-rathod-438442289/" label="LinkedIn" />
+                        <SocialLink icon={<FaGithub />} href="https://github.com/VikramRathodk" label="GitHub" />
+                        <SocialLink icon={<FaEnvelope />} href="mailto:rathodvikramk382@gmail.com" label="Email" />
                     </div>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginTop: '2rem' }}>rathodvikramk382@gmail.com</p>
                 </motion.div>
+
+                {/* Decorative Element */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: '-10rem',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '30rem',
+                    height: '20rem',
+                    background: 'radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)',
+                    zIndex: -1
+                }} />
             </div>
         </section>
     );
