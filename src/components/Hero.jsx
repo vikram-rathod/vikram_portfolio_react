@@ -36,93 +36,62 @@ const Hero = () => {
     };
 
     return (
-        <header className="hero mesh-gradient" onMouseMove={handleMouseMove}>
+        <section className="hero mesh-gradient">
             <div className="container hero-container">
                 <motion.div
                     className="hero-content"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
                 >
-                    <motion.div variants={itemVariants} className="hero-badge">
-                        ✨ Redefining Mobile Excellence
-                    </motion.div>
-                    <motion.h1 variants={itemVariants}>
-                        Crafting <span className="gradient-text">Premium</span><br />
-                        Digital Ecosystems
-                    </motion.h1>
-                    <motion.div variants={itemVariants} className="typing-container">
-                        <Typewriter
-                            words={['Senior Android Solutions Architect', 'Lead Flutter Engineer', 'Clean Architecture Evangelist', 'High-Performance Specialist']}
-                            loop={0}
-                            cursor
-                            cursorStyle='_'
-                            typeSpeed={60}
-                            deleteSpeed={30}
-                            delaySpeed={2000}
-                        />
-                    </motion.div>
-                    <motion.p variants={itemVariants} className="hero-description">
-                        Expert Mobile Developer with <strong>2+ years of professional mastery</strong>. engineering high-fidelity, scalable applications by bridging the gap between complex business logic and exceptional user experiences.
-                    </motion.p>
-                    <motion.div variants={itemVariants} className="hero-btns">
-                        <a href="#projects" className="btn-primary">Explore My Work</a>
-                        <a href="https://www.canva.com/design/DAG409WH0Gs/i0xLy23FwPL-pfRj_aYVIQ/view" target="_blank" className="btn-secondary">
-                            Download Resume
-                        </a>
-                    </motion.div>
-                    <motion.div variants={itemVariants} className="social-links">
-                        <a href="https://github.com/VikramRathodk" target="_blank" aria-label="GitHub"><FaGithub /></a>
-                        <a href="https://www.linkedin.com/in/vikram-rathod-438442289/" target="_blank" aria-label="LinkedIn"><FaLinkedinIn /></a>
-                        <a href="mailto:rathodvikramk382@gmail.com" aria-label="Email"><FaEnvelope /></a>
-                    </motion.div>
+                    <span style={{
+                        color: 'var(--text-dim)',
+                        border: '1px solid var(--border)',
+                        padding: '0.5rem 1rem',
+                        borderRadius: '2rem',
+                        fontSize: '0.8rem',
+                        background: 'rgba(255,255,255,0.02)'
+                    }}>
+                        Mobile Solutions Architect • 2+ Years Exp
+                    </span>
+                    <h1 className="gradient-text" style={{ fontSize: '4.5rem', fontWeight: '800', lineHeight: '1.1', margin: '2rem 0' }}>
+                        Architecting <br /> High-Performance <br /> Mobile Ecosystems.
+                    </h1>
+                    <p style={{ color: 'var(--text-dim)', fontSize: '1.2rem', maxWidth: '30rem', marginBottom: '2.5rem', lineHeight: '1.6' }}>
+                        I build scalable, enterprise-grade Android & Flutter applications that bridge complex business logic with exceptional user experiences.
+                    </p>
+                    <div className="hero-btns">
+                        <a href="#projects" className="btn-primary">View Portfolio</a>
+                        <a href="https://www.canva.com/design/DAG409WH0Gs/i0xLy23FwPL-pfRj_aYVIQ/view" target="_blank" className="btn-secondary">Get Resume</a>
+                    </div>
                 </motion.div>
 
-                <div className="hero-visual-container">
-                    <motion.div
-                        className="architecture-stack"
-                        initial={{ rotateY: -20, rotateX: 10, opacity: 0 }}
-                        animate={{ rotateY: 0, rotateX: 0, opacity: 1 }}
-                        transition={{ duration: 1.5, ease: "easeOut" }}
-                    >
-                        {/* Layer 3: Persistence Layer */}
-                        <motion.div className="layer-card layer-3 glass-morphism" custom={3} whileHover="hover" variants={layerVariants}>
-                            <h4 style={{ color: 'var(--accent-tertiary)', fontSize: '0.9rem' }}>Persistence & Sync</h4>
-                            <div className="tech-tags" style={{ marginTop: '10px' }}>
-                                <span>Room</span><span>WorkManager</span><span>Auth</span>
-                            </div>
-                        </motion.div>
-
-                        {/* Layer 2: Business Domain */}
-                        <motion.div className="layer-card layer-2 glass-morphism" custom={2} whileHover="hover" variants={layerVariants}>
-                            <h4 style={{ color: 'var(--accent-secondary)', fontSize: '0.9rem' }}>Domain & Networking</h4>
-                            <div className="tech-tags" style={{ marginTop: '10px' }}>
-                                <span>Retrofit</span><span>Coroutine</span><span>Clean Arch</span>
-                            </div>
-                        </motion.div>
-
-                        {/* Layer 1: Presentation (Top) */}
-                        <motion.div className="layer-card layer-1 glass-morphism glow-card" custom={1} whileHover="hover" variants={layerVariants}>
-                            <div className="code-header">
-                                <span className="dot red"></span><span className="dot yellow"></span><span className="dot green"></span>
-                            </div>
-                            <pre style={{ fontSize: '0.75rem', opacity: 0.9, lineHeight: '1.4' }}>
-                                <span className="keyword">@Composable</span><br />
-                                <span className="keyword">fun</span> <span className="function">AppLayout</span>() {'{'}<br />
-                                &nbsp;&nbsp;<span className="class-name">Scaffold</span> {'{'}<br />
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span className="function">NavigationGraph</span>()<br />
-                                &nbsp;&nbsp;{'}'}<br />
-                                {'}'}
-                            </pre>
-                        </motion.div>
-                    </motion.div>
-
-                    <div className="floating-icon icon-android" style={{ top: '5%', right: '5%' }}><SiAndroid /></div>
-                    <div className="floating-icon icon-flutter" style={{ bottom: '10%', left: '5%' }}><SiFlutter /></div>
-                    <div className="floating-icon icon-kotlin" style={{ top: '45%', right: '-10px' }}><SiKotlin /></div>
-                </div>
+                <motion.div
+                    className="hero-visual glass-morphism"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                >
+                    <div className="architecture-stack">
+                        <div className="layer-card">
+                            <span style={{ color: 'var(--primary)', fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.1em' }}>01. PRESENTATION</span>
+                            <h3 style={{ marginTop: '0.5rem', fontSize: '1.25rem' }}>Declarative UI</h3>
+                            <p style={{ fontSize: '0.9rem', color: 'var(--text-dim)', marginTop: '0.5rem' }}>Jetpack Compose & Flutter with rich, fluid animations.</p>
+                        </div>
+                        <div className="layer-card">
+                            <span style={{ color: '#10b981', fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.1em' }}>02. DOMAIN</span>
+                            <h3 style={{ marginTop: '0.5rem', fontSize: '1.25rem' }}>Clean Architecture</h3>
+                            <p style={{ fontSize: '0.9rem', color: 'var(--text-dim)', marginTop: '0.5rem' }}>MVVM, SOLID principles, and robust business logic.</p>
+                        </div>
+                        <div className="layer-card">
+                            <span style={{ color: '#f59e0b', fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.1em' }}>03. INFRASTRUCTURE</span>
+                            <h3 style={{ marginTop: '0.5rem', fontSize: '1.25rem' }}>Scalable Data</h3>
+                            <p style={{ fontSize: '0.9rem', color: 'var(--text-dim)', marginTop: '0.5rem' }}>Offline-first syncing, Room, and complex API orchestrations.</p>
+                        </div>
+                    </div>
+                </motion.div>
             </div>
-        </header>
+        </section>
     );
 };
 

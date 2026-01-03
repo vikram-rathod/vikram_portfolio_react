@@ -23,19 +23,17 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <nav className="navbar">
             <div className="container nav-container">
-                <a href="#" className="logo">Vikram<span>.dev</span></a>
-                <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
-                    <li><a href="#about" onClick={() => setIsOpen(false)}>About</a></li>
-                    <li><a href="#skills" onClick={() => setIsOpen(false)}>Skills</a></li>
-                    <li><a href="#experience" onClick={() => setIsOpen(false)}>Experience</a></li>
-                    <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
-                    <li><a href="https://www.canva.com/design/DAG409WH0Gs/i0xLy23FwPL-pfRj_aYVIQ/view" target="_blank" onClick={() => setIsOpen(false)}>Resume</a></li>
-                    <li><a href="#contact" className="btn-primary" onClick={() => setIsOpen(false)}>Contact Me</a></li>
-                </ul>
-                <div className="hamburger" onClick={toggleMenu}>
-                    {isOpen ? <FaTimes /> : <FaBars />}
+                <div className="logo" style={{ fontWeight: '800', fontSize: '1.2rem', letterSpacing: '-0.05em' }}>
+                    VIKRAM<span style={{ color: 'var(--primary)' }}>.</span>
+                </div>
+                <div className="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Work</a>
+                    <a href="https://www.canva.com/design/DAG409WH0Gs/i0xLy23FwPL-pfRj_aYVIQ/view" target="_blank">CV</a>
+                    <a href="#contact" className="btn-primary" style={{ padding: '0.5rem 1.2rem', marginLeft: '1rem' }}>Contact</a>
                 </div>
             </div>
         </nav>
