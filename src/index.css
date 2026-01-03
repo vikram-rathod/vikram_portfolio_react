@@ -1,12 +1,14 @@
 :root {
-    --bg: #000000;
-    --card-bg: #0a0a0a;
-    --text: #ffffff;
-    --text-dim: #a1a1aa;
-    --primary: #6366f1;
-    --border: rgba(255, 255, 255, 0.08);
-    --font-heading: 'Outfit', sans-serif;
+    --bg: #03030b;
+    --hud-cyan: #00f3ff;
+    --hud-magenta: #ff00ff;
+    --hud-border: rgba(0, 243, 255, 0.2);
+    --text-main: #f0f0ff;
+    --text-dim: #8a8a9e;
+    --primary: #00f3ff;
+    --font-heading: 'Fira Code', monospace;
     --font-body: 'Inter', sans-serif;
+    --border: rgba(0, 243, 255, 0.1);
 }
 
 * {
@@ -17,10 +19,25 @@
 
 body {
     background: var(--bg);
-    color: var(--text);
+    color: var(--text-main);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    position: relative;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 999;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    opacity: 0.3;
 }
 
 .container {
@@ -41,10 +58,38 @@ h3 {
 }
 
 .gradient-text {
-    background: linear-gradient(to bottom right, #ffffff 30%, rgba(255, 255, 255, 0.5));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--hud-cyan);
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+.hud-panel {
+    border: 1px solid var(--hud-border);
+    background: rgba(0, 243, 255, 0.05);
+    position: relative;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.hud-panel::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 25px;
+    height: 25px;
+    border-top: 3px solid var(--hud-cyan);
+    border-left: 3px solid var(--hud-cyan);
+}
+
+.hud-panel::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 25px;
+    height: 25px;
+    border-bottom: 3px solid var(--hud-cyan);
+    border-right: 3px solid var(--hud-cyan);
 }
 
 /* Background Grid */
@@ -56,10 +101,10 @@ h3 {
     height: 100%;
     z-index: -1;
     background-image:
-        radial-gradient(circle at 50% -20%, #1e1b4b, transparent),
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 100% 100%, 40px 40px, 40px 40px;
+        radial-gradient(circle at 50% 50%, #0a0a20, #03030b),
+        linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 50px 50px, 50px 50px;
 }
 
 /* Navbar */
@@ -86,14 +131,17 @@ h3 {
 }
 
 .nav-links a {
-    color: var(--text-dim);
+    color: var(--hud-cyan);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: color 0.2s;
+    font-family: var(--font-heading);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.2s;
 }
 
 .nav-links a:hover {
-    color: var(--text);
+    text-shadow: 0 0 8px var(--hud-cyan);
 }
 
 /* Hero */
@@ -155,23 +203,47 @@ h3 {
 
 /* Buttons */
 .btn-primary {
-    background: #fff;
-    color: #000;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
+    background: transparent;
+    color: var(--hud-cyan);
+    padding: 0.8rem 2.5rem;
+    border: 2px solid var(--hud-cyan);
+    font-weight: 700;
     text-decoration: none;
-    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: var(--font-heading);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+}
+
+.btn-primary:hover {
+    background: var(--hud-cyan);
+    color: #000;
+    box-shadow: 0 0 30px var(--hud-cyan);
+    transform: scale(1.05);
 }
 
 .btn-secondary {
-    color: #fff;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
+    background: transparent;
+    color: var(--hud-magenta);
+    padding: 0.8rem 2.5rem;
+    border: 2px solid var(--hud-magenta);
+    font-weight: 700;
     text-decoration: none;
-    border: 1px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: var(--font-heading);
     margin-left: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background: var(--hud-magenta);
+    color: #000;
+    box-shadow: 0 0 30px var(--hud-magenta);
 }
 
 /* Mobile Responsive */

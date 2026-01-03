@@ -11,11 +11,6 @@ import Footer from './components/Footer';
 function App() {
     return (
         <div className="app">
-            <div className="background-globes">
-                <div className="globe globe-1"></div>
-                <div className="globe globe-2"></div>
-                <div className="globe globe-3"></div>
-            </div>
             <Navbar />
             <Hero />
             <About />

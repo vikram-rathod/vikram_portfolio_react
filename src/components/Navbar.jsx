@@ -1,39 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import React from 'react';
 
 const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
-
     return (
-        <nav className="navbar">
+        <nav className="navbar" style={{ borderBottom: '1px solid var(--hud-border)', background: 'rgba(3,3,11,0.8)' }}>
             <div className="container nav-container">
-                <div className="logo" style={{ fontWeight: '800', fontSize: '1.2rem', letterSpacing: '-0.05em' }}>
-                    VIKRAM<span style={{ color: 'var(--primary)' }}>.</span>
+                <div className="logo" style={{
+                    fontFamily: 'var(--font-heading)',
+                    fontWeight: '900',
+                    fontSize: '1.4rem',
+                    letterSpacing: '2px',
+                    color: '#fff',
+                    textShadow: '0 0 10px var(--hud-cyan)'
+                }}>
+                    [ VIKRAM<span style={{ color: 'var(--hud-cyan)' }}>.OS</span> ]
                 </div>
                 <div className="nav-links">
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Work</a>
-                    <a href="https://www.canva.com/design/DAG409WH0Gs/i0xLy23FwPL-pfRj_aYVIQ/view" target="_blank">CV</a>
-                    <a href="#contact" className="btn-primary" style={{ padding: '0.5rem 1.2rem', marginLeft: '1rem' }}>Contact</a>
+                    <a href="#about" style={{ fontSize: '0.8rem' }}>PROFILE</a>
+                    <a href="#skills" style={{ fontSize: '0.8rem' }}>ABILITIES</a>
+                    <a href="#projects" style={{ fontSize: '0.8rem' }}>MISSIONS</a>
+                    <a href="https://www.canva.com/design/DAG409WH0Gs/i0xLy23FwPL-pfRj_aYVIQ/view" target="_blank" style={{ fontSize: '0.8rem' }}>INTEL</a>
+                    <a href="#contact" className="btn-primary" style={{ padding: '0.5rem 1.5rem', marginLeft: '1.5rem', fontSize: '0.8rem' }}>COMM LINK</a>
                 </div>
             </div>
         </nav>
