@@ -1,15 +1,12 @@
 import React from 'react';
-import { SiKotlin, SiAndroid, SiFlutter, SiDart, SiFirebase, SiSqlite } from 'react-icons/si';
-import { FaJava, FaLayerGroup, FaBoxOpen, FaNetworkWired, FaSyringe, FaProjectDiagram, FaCubes, FaDatabase, FaCode } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { SiKotlin, SiAndroid, SiFlutter, SiDart, SiFirebase, SiSqlite } from 'react-icons/si';
+import { FaJava, FaLayerGroup, FaNetworkWired, FaSyringe, FaProjectDiagram } from 'react-icons/fa';
 
 const SkillCard = ({ icon, name }) => (
     <motion.div
-        className="skill-card"
-        whileHover={{ y: -5, borderColor: 'var(--accent-primary)', backgroundColor: 'rgba(255,255,255,0.08)' }}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
+        className="skill-tag"
+        whileHover={{ transform: "translateY(-4px)", borderColor: "var(--primary)" }}
     >
         {icon}
         <span>{name}</span>
@@ -18,13 +15,16 @@ const SkillCard = ({ icon, name }) => (
 
 const Skills = () => {
     return (
-        <section id="skills" className="section skills-section">
+        <section id="skills" className="section" style={{ background: 'rgba(255,255,255,0.01)' }}>
             <div className="container">
-                <h2 className="section-title">Tech <span className="gradient-text">Stack</span></h2>
+                <div className="section-header">
+                    <h2 className="gradient-text">Core Tech Stack</h2>
+                    <p>Specialized in building the next generation of mobile experiences.</p>
+                </div>
 
-                <div className="skills-category">
-                    <h3>Mobile Development</h3>
-                    <div className="skills-grid">
+                <div style={{ marginBottom: '4rem' }}>
+                    <h3 style={{ marginBottom: '2rem', fontSize: '1.2rem', color: 'var(--primary)' }}>Mobile & Languages</h3>
+                    <div className="skills-list">
                         <SkillCard icon={<SiAndroid style={{ color: '#3DDC84' }} />} name="Android" />
                         <SkillCard icon={<SiKotlin style={{ color: '#7F52FF' }} />} name="Kotlin" />
                         <SkillCard icon={<FaJava style={{ color: '#ED8B00' }} />} name="Java" />
@@ -33,23 +33,15 @@ const Skills = () => {
                     </div>
                 </div>
 
-                <div className="skills-category">
-                    <h3>Frameworks & Libraries</h3>
-                    <div className="skills-grid">
-                        <SkillCard icon={<FaLayerGroup style={{ color: '#4285F4' }} />} name="Jetpack Compose" />
-                        <SkillCard icon={<FaBoxOpen style={{ color: '#4285F4' }} />} name="Android Jetpack" />
-                        <SkillCard icon={<FaNetworkWired style={{ color: '#48B983' }} />} name="Retrofit" />
-                        <SkillCard icon={<FaSyringe style={{ color: '#4285F4' }} />} name="Hilt Dagger" />
-                    </div>
-                </div>
-
-                <div className="skills-category">
-                    <h3>Architecture & Backend</h3>
-                    <div className="skills-grid">
-                        <SkillCard icon={<FaProjectDiagram style={{ color: '#FF6B6B' }} />} name="MVVM" />
-                        <SkillCard icon={<FaCubes style={{ color: '#4ECDC4' }} />} name="Clean Arch" />
+                <div>
+                    <h3 style={{ marginBottom: '2rem', fontSize: '1.2rem', color: 'var(--primary)' }}>Architecture & Infrastructure</h3>
+                    <div className="skills-list">
                         <SkillCard icon={<SiFirebase style={{ color: '#FFCA28' }} />} name="Firebase" />
-                        <SkillCard icon={<SiSqlite style={{ color: '#07405E' }} />} name="Room / SQLite" />
+                        <SkillCard icon={<SiSqlite style={{ color: '#07405E' }} />} name="Room / SQL" />
+                        <SkillCard icon={<FaLayerGroup />} name="Jetpack Compose" />
+                        <SkillCard icon={<FaNetworkWired />} name="Retrofit" />
+                        <SkillCard icon={<FaSyringe />} name="Hilt / Dagger" />
+                        <SkillCard icon={<FaProjectDiagram />} name="MVVM / Clean Arch" />
                     </div>
                 </div>
             </div>

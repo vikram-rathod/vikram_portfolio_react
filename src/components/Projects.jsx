@@ -1,60 +1,62 @@
 import React from 'react';
-import { FaGithub, FaComments, FaTasks, FaHamburger } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
-const ProjectCard = ({ title, icon, desc, tags }) => (
+const ProjectCard = ({ title, desc, tags, className }) => (
     <motion.div
-        className="project-card glass-card"
-        whileHover={{ y: -10 }}
+        className={`bento-item project-card ${className}`}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        whileHover={{ transform: "scale(1.01)" }}
     >
-        <div className="project-content">
-            <div className="project-header">
-                <h3>{icon} {title}</h3>
-                <div className="project-links">
-                    <a href="#" title="View Code"><FaGithub /></a>
-                </div>
+        <div className="project-header">
+            <h3>{title}</h3>
+            <div className="project-links" style={{ display: 'flex', gap: '1rem' }}>
+                <a href="#"><FaGithub style={{ fontSize: '1.2rem' }} /></a>
+                <a href="#"><FaExternalLinkAlt style={{ fontSize: '1rem' }} /></a>
             </div>
-            <p className="project-desc">{desc}</p>
-            <div className="tech-tags">
-                {tags.map((tag, i) => (
-                    <span key={i}>{tag}</span>
-                ))}
-            </div>
+        </div>
+        <p>{desc}</p>
+        <div className="project-tags">
+            {tags.map((tag, i) => (
+                <span key={i} className="tag">{tag}</span>
+            ))}
         </div>
     </motion.div>
 );
 
 const Projects = () => {
     return (
-        <section id="projects" className="section projects-section">
+        <section id="projects" className="section">
             <div className="container">
-                <h2 className="section-title">Featured <span className="gradient-text">Projects</span></h2>
-                <div className="projects-grid">
+                <div className="section-header">
+                    <h2 className="gradient-text">Featured Projects</h2>
+                    <p>Selection of high-impact mobile solutions and ecosystems.</p>
+                </div>
 
+                <div className="bento-grid">
                     <ProjectCard
+                        className="col-span-2"
                         title="ProChat Alpha"
-                        icon={<FaComments />}
-                        desc="Architected a high-concurrency real-time messaging ecosystem for corporate teams. Features end-to-end encryption, automated thread management, and optimized WebSocket communication."
-                        tags={['Kotlin', 'Coroutines', 'Firebase', 'Clean Architecture']}
+                        desc="Architected a high-concurrency real-time messaging ecosystem for corporate teams. Features end-to-end encryption, automated thread management, and optimized WebSocket communication for seamless professional collaboration."
+                        tags={['Kotlin', 'Coroutines', 'Firebase', 'MVVM']}
                     />
-
                     <ProjectCard
                         title="Steveo Enterprise"
-                        icon={<FaTasks />}
-                        desc="Engineered an enterprise-grade resource management suite with sophisticated analytics, deadline optimization, and offline-first synchronization using Room and WorkManager."
-                        tags={['Jetpack Compose', 'MVVM', 'Room', 'Analytics']}
+                        desc="Engineered an enterprise-grade resource management suite with sophisticated analytics and offline-first synchronization."
+                        tags={['Jetpack Compose', 'Room', 'WorkManager']}
                     />
-
                     <ProjectCard
                         title="Global Gourmet"
-                        icon={<FaHamburger />}
-                        desc="Developed a high-performance cross-platform food delivery engine. Implemented real-time logistics tracking, secure multi-currency payment gateways, and high-fidelity animations."
-                        tags={['Flutter', 'Dart', 'Stripe API', 'Google Maps']}
+                        desc="Developed a high-performance cross-platform food delivery engine with real-time logistics tracking and secure payment gateways."
+                        tags={['Flutter', 'Dart', 'Stripe API']}
                     />
-
+                    <ProjectCard
+                        className="col-span-2"
+                        title="Architecture Baseline"
+                        desc="Created a standardized mobile architecture template for enterprise apps, reducing boilerplate by 30% and enforcing strict Clean Architecture standards."
+                        tags={['Clean Architecture', 'SOLID', 'Modularization']}
+                    />
                 </div>
             </div>
         </section>

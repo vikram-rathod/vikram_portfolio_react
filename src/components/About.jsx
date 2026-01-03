@@ -1,53 +1,85 @@
 import React from 'react';
-import { FaGraduationCap } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { FaGraduationCap, FaCode, FaRocket, FaUsers } from 'react-icons/fa';
 
 const About = () => {
     return (
-        <section id="about" className="section about-section">
+        <section id="about" className="section">
             <div className="container">
-                <h2 className="section-title">About <span className="gradient-text">Me</span></h2>
-                <div className="about-grid">
+                <div className="section-header">
+                    <h2 className="gradient-text">About Me</h2>
+                    <p>Merging complex business logic with exceptional user experience.</p>
+                </div>
+
+                <div className="bento-grid">
+                    {/* Main Bio Card */}
                     <motion.div
-                        className="about-content"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5 }}
+                        className="bento-item col-span-2"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                     >
+                        <h3>Strategic Vision</h3>
                         <p>
-                            I am a visionary <strong>Mobile Solutions Architect</strong> dedicated to pushing the boundaries of mobile technology at <strong>Comzent Technologies Pvt. Ltd</strong>.
+                            With over 2 years of professional mastery at Comzent Technologies, I engineer high-fidelity mobile ecosystems that define the gold standard for technical excellence. My philosophy is rooted in SOLID principles and Domain-Driven Design.
                         </p>
-                        <p>
-                            With over <strong>2 years of professional experience</strong>, I specialize in engineering high-performance, scalable mobile ecosystems using <strong>Kotlin, Jetpack Compose, and Flutter</strong>. My core philosophy centers on <strong>SOLID principles</strong>, <strong>Domain-Driven Design</strong>, and crafting pixel-perfect user journeys that drive business value.
-                        </p>
-                        <div className="about-stats">
-                            <div className="stat-item">
-                                <h3>2+</h3>
-                                <p>Years of Mastery</p>
+                        <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem' }}>
+                            <div>
+                                <h4 style={{ color: 'var(--primary)', fontSize: '2rem' }}>2+</h4>
+                                <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Years Mastery</span>
                             </div>
-                            <div className="stat-item">
-                                <h3>25+</h3>
-                                <p>APIs Orchestrated</p>
-                            </div>
-                            <div className="stat-item">
-                                <h3>5+</h3>
-                                <p>Strategic Deployments</p>
+                            <div>
+                                <h4 style={{ color: 'var(--primary)', fontSize: '2rem' }}>25+</h4>
+                                <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>APIs Launched</span>
                             </div>
                         </div>
                     </motion.div>
+
+                    {/* Education Card */}
                     <motion.div
-                        className="education-card"
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5 }}
+                        className="bento-item"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
                     >
-                        <h3><FaGraduationCap /> Education</h3>
-                        <div className="edu-item">
-                            <h4>Master of Computer Applications (MCA)</h4>
-                            <p className="institution">Bhartiya Vidya Bhavans Sardar Patel Institute of Technology</p>
-                            <p className="year">2020 – 2024</p>
-                            <p className="grade">CGPA: 8.0/10</p>
-                        </div>
+                        <FaGraduationCap style={{ fontSize: '2rem', color: 'var(--primary)', marginBottom: '1.5rem' }} />
+                        <h3>Education</h3>
+                        <p style={{ fontSize: '1.1rem', color: '#fff' }}>MCA</p>
+                        <p>Sardar Patel Institute of Technology</p>
+                        <p style={{ marginTop: '0.5rem', fontSize: '0.8rem' }}>CGPA: 8.0/10</p>
+                    </motion.div>
+
+                    {/* Philosophy Cards */}
+                    <motion.div
+                        className="bento-item"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        <FaCode style={{ marginBottom: '1rem', color: 'var(--primary)' }} />
+                        <h3>Clean Code</h3>
+                        <p>Adherence to MVVM and Clean Architecture patterns for maximum scalability.</p>
+                    </motion.div>
+
+                    <motion.div
+                        className="bento-item"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                    >
+                        <FaRocket style={{ marginBottom: '1rem', color: 'var(--primary)' }} />
+                        <h3>Performance</h3>
+                        <p>Optimizing for high-concurrency and offline-first synchronization.</p>
+                    </motion.div>
+
+                    <motion.div
+                        className="bento-item"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                    >
+                        <FaUsers style={{ marginBottom: '1rem', color: 'var(--primary)' }} />
+                        <h3>Leadership</h3>
+                        <p>Mentoring developers and pioneering strategic technology transitions.</p>
                     </motion.div>
                 </div>
             </div>
