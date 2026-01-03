@@ -2,24 +2,17 @@ import React from 'react';
 
 const Navbar = () => {
     return (
-        <nav className="navbar" style={{ borderBottom: '1px solid var(--hud-border)', background: 'rgba(3,3,11,0.8)' }}>
+        <nav className="navbar">
             <div className="container nav-container">
-                <div className="logo" style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontWeight: '900',
-                    fontSize: '1.4rem',
-                    letterSpacing: '2px',
-                    color: '#fff',
-                    textShadow: '0 0 10px var(--hud-cyan)'
-                }}>
-                    [ VIKRAM<span style={{ color: 'var(--hud-cyan)' }}>.OS</span> ]
+                <div className="logo" style={{ fontWeight: '900', fontSize: '1.3rem', letterSpacing: '-0.05em' }}>
+                    VIKRAM<span style={{ color: 'var(--primary)' }}>.</span>
                 </div>
                 <div className="nav-links">
-                    <a href="#about" style={{ fontSize: '0.8rem' }}>PROFILE</a>
-                    <a href="#skills" style={{ fontSize: '0.8rem' }}>ABILITIES</a>
-                    <a href="#projects" style={{ fontSize: '0.8rem' }}>MISSIONS</a>
-                    <a href="https://www.canva.com/design/DAG409WH0Gs/i0xLy23FwPL-pfRj_aYVIQ/view" target="_blank" style={{ fontSize: '0.8rem' }}>INTEL</a>
-                    <a href="#contact" className="btn-primary" style={{ padding: '0.5rem 1.5rem', marginLeft: '1.5rem', fontSize: '0.8rem' }}>COMM LINK</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Work</a>
+                    <a href="https://www.canva.com/design/DAG409WH0Gs/i0xLy23FwPL-pfRj_aYVIQ/view" target="_blank">CV</a>
+                    <a href="#contact" className="btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem' }}>Contact</a>
                 </div>
             </div>
         </nav>
