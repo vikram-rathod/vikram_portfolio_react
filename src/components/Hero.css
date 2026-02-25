@@ -1,0 +1,82 @@
+.hero-container-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.hero-badge-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.hero-badge {
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 9999px;
+    padding: 0.45rem 1.1rem;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.hero-badge-dot {
+    width: 7px;
+    height: 7px;
+    background: #4ade80;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.hero-role-wrapper {
+    margin-bottom: 1.5rem;
+    min-height: 2.2rem;
+}
+
+.hero-role-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 3vw, 1.75rem);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.hero-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.4em;
+    background: var(--accent);
+    border-radius: 2px;
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+}
+
+.hero-description {
+    margin: 0 auto 3.5rem;
+}
+
+.hero-cta-container {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-particle {
+    position: absolute;
+    bottom: 10%;
+    border-radius: 50%;
+    background: var(--accent);
+    pointer-events: none;
+}
+
+.hero-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}

@@ -4,6 +4,7 @@ import Card from './ui/Card';
 import SectionHeader from './ui/SectionHeader';
 import { FaGithub, FaExternalLinkAlt, FaComments, FaTasks, FaHamburger, FaCheckCircle } from 'react-icons/fa';
 import { SiKotlin, SiFlutter, SiFirebase, SiDart } from 'react-icons/si';
+import './Projects.css';
 
 const projectsData = [
     {
@@ -25,8 +26,8 @@ const projectsData = [
         featured: true,
         accentColor: '#38bdf8',
         langIcons: [
-            <SiKotlin style={{ color: '#7F52FF' }} />,
-            <SiFirebase style={{ color: '#FFCA28' }} />,
+            <SiKotlin key="kotlin" style={{ color: '#7F52FF' }} />,
+            <SiFirebase key="firebase" style={{ color: '#FFCA28' }} />,
         ],
     },
     {
@@ -48,7 +49,7 @@ const projectsData = [
         featured: false,
         accentColor: '#a78bfa',
         langIcons: [
-            <SiKotlin style={{ color: '#7F52FF' }} />,
+            <SiKotlin key="kotlin" style={{ color: '#7F52FF' }} />,
         ],
     },
     {
@@ -70,9 +71,9 @@ const projectsData = [
         featured: false,
         accentColor: '#fb923c',
         langIcons: [
-            <SiFlutter style={{ color: '#02569B' }} />,
-            <SiDart style={{ color: '#0175C2' }} />,
-            <SiFirebase style={{ color: '#FFCA28' }} />,
+            <SiFlutter key="flutter" style={{ color: '#02569B' }} />,
+            <SiDart key="dart" style={{ color: '#0175C2' }} />,
+            <SiFirebase key="firebase" style={{ color: '#FFCA28' }} />,
         ],
     },
 ];
@@ -86,106 +87,60 @@ const FeaturedProjectCard = ({ project, delay = 0 }) => {
             transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
             style={{ gridColumn: 'span 12' }}
         >
-            <div style={{
-                background: 'rgba(15, 20, 40, 0.6)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderRadius: 'var(--radius)',
-                padding: '2.5rem',
-                backdropFilter: 'blur(20px)',
-                position: 'relative',
-                overflow: 'hidden',
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '3rem',
-                alignItems: 'center',
-            }}>
+            <div className="featured-project-card">
                 {/* Accent glow */}
-                <div style={{
-                    position: 'absolute',
-                    top: 0, left: 0,
-                    width: '300px', height: '300px',
-                    background: `radial-gradient(circle, ${project.accentColor}18, transparent 70%)`,
-                    borderRadius: '50%',
-                    pointerEvents: 'none',
-                }} />
+                <div
+                    className="featured-project-glow"
+                    style={{ background: `radial-gradient(circle, ${project.accentColor}18, transparent 70%)` }}
+                />
 
                 {/* Left: Info */}
                 <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                        <div style={{
-                            width: '3.5rem', height: '3.5rem',
-                            background: `${project.accentColor}18`,
-                            borderRadius: 'var(--radius-sm)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            color: project.accentColor,
-                            fontSize: '1.5rem',
-                            flexShrink: 0,
-                        }}>
+                        <div
+                            className="project-icon-container"
+                            style={{ background: `${project.accentColor}18`, color: project.accentColor }}
+                        >
                             {project.icon}
                         </div>
-                        <span style={{
-                            fontSize: '0.72rem',
-                            fontWeight: 700,
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.12em',
-                            color: project.accentColor,
-                            background: `${project.accentColor}15`,
-                            padding: '0.3rem 0.9rem',
-                            borderRadius: '9999px',
-                            border: `1px solid ${project.accentColor}30`,
-                        }}>
+                        <span
+                            className="featured-badge"
+                            style={{
+                                color: project.accentColor,
+                                background: `${project.accentColor}15`,
+                                border: `1px solid ${project.accentColor}30`,
+                            }}
+                        >
                             ★ Featured Project
                         </span>
                     </div>
 
-                    <h3 style={{ fontSize: '2rem', fontFamily: 'var(--font-display)', marginBottom: '0.4rem' }}>
-                        {project.title}
-                    </h3>
-                    <p style={{ color: project.accentColor, fontWeight: 600, marginBottom: '1.25rem', fontSize: '0.95rem' }}>
-                        {project.subtitle}
-                    </p>
-                    <p style={{ color: 'var(--text-dim)', lineHeight: 1.8, marginBottom: '2rem', fontSize: '0.95rem' }}>
-                        {project.desc}
-                    </p>
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-subtitle" style={{ color: project.accentColor }}>{project.subtitle}</p>
+                    <p className="project-desc">{project.desc}</p>
 
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem' }}>
+                    <div className="project-tags-container">
                         {project.tags.map((tag, i) => (
-                            <span key={i} style={{
-                                fontSize: '0.75rem',
-                                padding: '0.3rem 0.75rem',
-                                background: 'rgba(255,255,255,0.04)',
-                                borderRadius: '9999px',
-                                color: project.accentColor,
-                                fontWeight: 600,
-                                border: '1px solid var(--border)',
-                            }}>
+                            <span key={i} className="project-tag" style={{ color: project.accentColor }}>
                                 {tag}
                             </span>
                         ))}
                     </div>
 
-                    <div style={{ display: 'flex', gap: '1.25rem' }}>
+                    <div className="project-links">
                         <motion.a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ y: -2, color: project.accentColor }}
-                            style={{
-                                display: 'flex', alignItems: 'center', gap: '0.5rem',
-                                color: 'var(--text-dim)', fontSize: '0.9rem', fontWeight: 600,
-                                textDecoration: 'none',
-                            }}
+                            className="project-link"
                         >
                             <FaGithub /> GitHub
                         </motion.a>
                         <motion.a
                             href="#"
                             whileHover={{ y: -2, color: project.accentColor }}
-                            style={{
-                                display: 'flex', alignItems: 'center', gap: '0.5rem',
-                                color: 'var(--text-dim)', fontSize: '0.9rem', fontWeight: 600,
-                                textDecoration: 'none',
-                            }}
+                            className="project-link"
                         >
                             <FaExternalLinkAlt /> Live Demo
                         </motion.a>
@@ -193,16 +148,9 @@ const FeaturedProjectCard = ({ project, delay = 0 }) => {
                 </div>
 
                 {/* Right: Feature list */}
-                <div style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    borderRadius: 'var(--radius-sm)',
-                    border: '1px solid var(--border)',
-                    padding: '2rem',
-                }}>
-                    <h4 style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-dim)', marginBottom: '1.5rem' }}>
-                        Key Features
-                    </h4>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div className="project-features-panel">
+                    <h4 className="project-features-title">Key Features</h4>
+                    <div className="project-features-list">
                         {project.features.map((f, i) => (
                             <motion.div
                                 key={i}
@@ -210,15 +158,15 @@ const FeaturedProjectCard = ({ project, delay = 0 }) => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 * i }}
-                                style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}
+                                className="project-feature-item"
                             >
                                 <FaCheckCircle style={{ color: project.accentColor, flexShrink: 0, fontSize: '0.9rem' }} />
-                                <span style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>{f}</span>
+                                <span className="project-feature-text">{f}</span>
                             </motion.div>
                         ))}
                     </div>
-                    <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border)', alignItems: 'center' }}>
-                        <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontWeight: 600 }}>Tech:</span>
+                    <div className="project-tech-icons-container">
+                        <span className="project-tech-label">Tech:</span>
                         {project.langIcons.map((icon, i) => (
                             <span key={i} style={{ fontSize: '1.3rem' }}>{icon}</span>
                         ))}
@@ -241,22 +189,11 @@ const SmallProjectCard = ({ project, delay = 0 }) => {
             onHoverStart={() => setHovered(true)}
             onHoverEnd={() => setHovered(false)}
             style={{ gridColumn: 'span 6' }}
+            className="bento-grid-item"
         >
             <motion.div
                 animate={{ borderColor: hovered ? `${project.accentColor}50` : 'rgba(255,255,255,0.08)' }}
-                style={{
-                    background: 'rgba(15, 20, 40, 0.6)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: 'var(--radius)',
-                    padding: '2.25rem',
-                    backdropFilter: 'blur(20px)',
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    cursor: 'default',
-                }}
+                className="small-project-card-container"
             >
                 <AnimatePresence>
                     {hovered && (
@@ -264,30 +201,20 @@ const SmallProjectCard = ({ project, delay = 0 }) => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            style={{
-                                position: 'absolute',
-                                top: 0, left: 0,
-                                width: '200px', height: '200px',
-                                background: `radial-gradient(circle, ${project.accentColor}12, transparent 70%)`,
-                                borderRadius: '50%',
-                                pointerEvents: 'none',
-                            }}
+                            className="small-project-glow"
+                            style={{ background: `radial-gradient(circle, ${project.accentColor}12, transparent 70%)` }}
                         />
                     )}
                 </AnimatePresence>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem' }}>
-                    <div style={{
-                        width: '3.25rem', height: '3.25rem',
-                        background: `${project.accentColor}15`,
-                        borderRadius: 'var(--radius-sm)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        color: project.accentColor,
-                        fontSize: '1.4rem',
-                    }}>
+                <div className="small-project-header">
+                    <div
+                        className="small-project-icon-container"
+                        style={{ background: `${project.accentColor}15`, color: project.accentColor }}
+                    >
                         {project.icon}
                     </div>
-                    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                    <div className="small-project-links">
                         <motion.a
                             whileHover={{ color: project.accentColor, y: -2 }}
                             href={project.github}
@@ -307,36 +234,22 @@ const SmallProjectCard = ({ project, delay = 0 }) => {
                     </div>
                 </div>
 
-                <h3 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-display)', marginBottom: '0.4rem' }}>
-                    {project.title}
-                </h3>
-                <p style={{ color: project.accentColor, fontWeight: 600, fontSize: '0.85rem', marginBottom: '1rem' }}>
-                    {project.subtitle}
-                </p>
-                <p style={{ color: 'var(--text-dim)', fontSize: '0.93rem', lineHeight: 1.75, marginBottom: '1.5rem', flex: 1 }}>
-                    {project.desc}
-                </p>
+                <h3 className="small-project-title">{project.title}</h3>
+                <p className="small-project-subtitle" style={{ color: project.accentColor }}>{project.subtitle}</p>
+                <p className="small-project-desc">{project.desc}</p>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1.75rem' }}>
+                <div className="small-project-features-list">
                     {project.features.slice(0, 4).map((f, i) => (
-                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                        <div key={i} className="small-project-feature-item">
                             <FaCheckCircle style={{ color: project.accentColor, flexShrink: 0, fontSize: '0.75rem' }} />
-                            <span style={{ color: 'var(--text-dim)', fontSize: '0.82rem' }}>{f}</span>
+                            <span className="small-project-feature-text">{f}</span>
                         </div>
                     ))}
                 </div>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
+                <div className="small-project-tags-container">
                     {project.tags.map((tag, i) => (
-                        <span key={i} style={{
-                            fontSize: '0.72rem',
-                            padding: '0.25rem 0.7rem',
-                            background: 'rgba(255,255,255,0.04)',
-                            borderRadius: '9999px',
-                            color: project.accentColor,
-                            fontWeight: 600,
-                            border: '1px solid var(--border)',
-                        }}>
+                        <span key={i} className="small-project-tag" style={{ color: project.accentColor }}>
                             {tag}
                         </span>
                     ))}
@@ -357,11 +270,7 @@ const Projects = () => {
                 subtitle="Real-world mobile applications built with clean architecture, modern patterns, and production-grade standards."
             />
 
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(12, 1fr)',
-                gap: '1.5rem',
-            }}>
+            <div className="projects-grid">
                 {/* Featured Card */}
                 <FeaturedProjectCard project={featured} delay={0} />
 

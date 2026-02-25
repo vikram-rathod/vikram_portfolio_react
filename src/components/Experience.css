@@ -1,0 +1,109 @@
+.experience-timeline-dot-wrapper {
+    position: absolute;
+    left: -2.6rem;
+    top: 1.8rem;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+    display: block;
+}
+
+.experience-timeline-dot-wrapper.secondary {
+    background: var(--secondary);
+    box-shadow: 0 0 10px rgba(192, 132, 252, 0.5);
+}
+
+.experience-timeline-ping {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid rgba(56, 189, 248, 0.5);
+    display: block;
+}
+
+.experience-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.experience-role-title {
+    font-size: 1.6rem;
+    font-family: var(--font-display);
+    margin-bottom: 0.35rem;
+}
+
+.experience-company {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.experience-company.secondary {
+    color: var(--secondary);
+}
+
+.experience-date-badge {
+    padding: 0.4rem 1.1rem;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 9999px;
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.experience-date-badge.secondary {
+    background: rgba(192, 132, 252, 0.08);
+    border: 1px solid rgba(192, 132, 252, 0.2);
+    color: var(--secondary);
+}
+
+.experience-bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.experience-bullet-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.experience-bullet-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.55rem;
+}
+
+.experience-tech-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.experience-tech-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(56, 189, 248, 0.07);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 9999px;
+    color: var(--accent);
+    font-weight: 600;
+}

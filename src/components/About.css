@@ -1,0 +1,89 @@
+.about-card-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-display);
+}
+
+.about-card-text {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+
+.about-card-text-strong {
+    color: var(--text-strong);
+}
+
+.about-card-text-accent {
+    color: var(--accent);
+}
+
+.about-stat-title {
+    font-size: 3.75rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.about-stat-title.accent {
+    color: var(--accent);
+}
+
+.about-stat-title.secondary {
+    color: var(--secondary);
+}
+
+.about-stat-label {
+    font-weight: 600;
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 1rem;
+}
+
+.about-stat-desc {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+}
+
+.about-edu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.about-edu-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-display);
+}
+
+.about-edu-degree {
+    color: var(--text-strong);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.about-edu-school {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+.about-edu-cgpa-container {
+    text-align: right;
+}
+
+.about-edu-cgpa {
+    color: var(--accent);
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.about-edu-year {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    margin-top: 0.35rem;
+}

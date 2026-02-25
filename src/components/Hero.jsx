@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Button from './ui/Button';
 import { FaArrowRight, FaDownload } from 'react-icons/fa';
+import './Hero.css';
 
 /* ── Typewriter hook ─────────────────────────── */
 const ROLES = ['Android Developer', 'Flutter Developer', 'Mobile Architect', 'Kotlin Engineer'];
@@ -37,19 +38,11 @@ function useTypewriter(words, speed = 80, pause = 1800) {
 function Particle({ x, size, duration, delay }) {
     return (
         <motion.span
+            className="hero-particle"
             initial={{ y: 0, opacity: 0 }}
             animate={{ y: -120, opacity: [0, 0.8, 0] }}
             transition={{ duration, delay, repeat: Infinity, ease: 'easeOut' }}
-            style={{
-                position: 'absolute',
-                bottom: '10%',
-                left: `${x}%`,
-                width: size,
-                height: size,
-                borderRadius: '50%',
-                background: 'var(--accent)',
-                pointerEvents: 'none',
-            }}
+            style={{ left: `${x}%`, width: size, height: size }}
         />
     );
 }
@@ -68,16 +61,10 @@ const fadeUp = {
 function Ring({ size, opacity }) {
     return (
         <motion.div
+            className="hero-ring"
             animate={{ rotate: 360 }}
             transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-            style={{
-                position: 'absolute',
-                width: size,
-                height: size,
-                borderRadius: '50%',
-                border: `1px solid rgba(56,189,248,${opacity})`,
-                pointerEvents: 'none',
-            }}
+            style={{ width: size, height: size, border: `1px solid rgba(56,189,248,${opacity})` }}
         />
     );
 }
@@ -106,35 +93,22 @@ export default function Hero() {
 
             {/* Staggered content entrance */}
             <motion.div
+                className="hero-container-content"
                 variants={container}
                 initial="hidden"
                 animate="show"
-                style={{ position: 'relative', zIndex: 1, width: '100%' }}
             >
                 {/* Status badge */}
-                <motion.div variants={fadeUp} style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+                <motion.div className="hero-badge-container" variants={fadeUp}>
                     <motion.span
+                        className="hero-badge"
                         animate={{ boxShadow: ['0 0 0px rgba(56,189,248,0)', '0 0 18px rgba(56,189,248,0.4)', '0 0 0px rgba(56,189,248,0)'] }}
                         transition={{ duration: 3, repeat: Infinity }}
-                        style={{
-                            background: 'rgba(56,189,248,0.1)',
-                            border: '1px solid rgba(56,189,248,0.25)',
-                            borderRadius: '9999px',
-                            padding: '0.45rem 1.1rem',
-                            color: 'var(--accent)',
-                            fontSize: '0.78rem',
-                            fontWeight: 700,
-                            letterSpacing: '0.1em',
-                            textTransform: 'uppercase',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.6rem',
-                        }}
                     >
                         <motion.span
+                            className="hero-badge-dot"
                             animate={{ scale: [1, 1.4, 1] }}
                             transition={{ duration: 1.5, repeat: Infinity }}
-                            style={{ width: 7, height: 7, background: '#4ade80', borderRadius: '50%', display: 'inline-block' }}
                         />
                         Open to Freelance &amp; Full-time
                     </motion.span>
@@ -148,38 +122,21 @@ export default function Hero() {
                 </motion.h1>
 
                 {/* Typewriter role */}
-                <motion.div variants={fadeUp} style={{ marginBottom: '1.5rem', minHeight: '2.2rem' }}>
-                    <span style={{
-                        fontFamily: 'var(--font-display)',
-                        fontSize: 'clamp(1.2rem, 3vw, 1.75rem)',
-                        color: 'var(--accent)',
-                        fontWeight: 600,
-                    }}>
+                <motion.div className="hero-role-wrapper" variants={fadeUp}>
+                    <span className="hero-role-text">
                         {role}
                     </span>
-                    <span style={{
-                        display: 'inline-block',
-                        width: 2,
-                        height: '1.4em',
-                        background: 'var(--accent)',
-                        borderRadius: 2,
-                        marginLeft: 4,
-                        verticalAlign: 'middle',
-                        animation: 'blink 1s step-end infinite',
-                    }} />
+                    <span className="hero-cursor" />
                 </motion.div>
 
                 {/* Description */}
-                <motion.p className="hero-p" variants={fadeUp} style={{ margin: '0 auto 3.5rem' }}>
+                <motion.p className="hero-p hero-description" variants={fadeUp}>
                     Mobile Application Developer at Comzent Technologies with 2+ years of experience
                     building production-grade Android &amp; Flutter apps using Kotlin, Jetpack Compose &amp; Clean Architecture.
                 </motion.p>
 
                 {/* CTAs */}
-                <motion.div
-                    variants={fadeUp}
-                    style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}
-                >
+                <motion.div className="hero-cta-container" variants={fadeUp}>
                     <Button href="#projects" variant="primary" icon={<FaArrowRight />}>
                         Explore Work
                     </Button>
@@ -194,7 +151,7 @@ export default function Hero() {
                 </motion.div>
             </motion.div>
 
-            {/* Blink keyframe — injected once */}
+            {/* Blink keyframe (global/inline fallback if needed) */}
             <style>{`@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }`}</style>
         </section>
     );

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import SectionHeader from './ui/SectionHeader';
+import './About.css';
 
 /* ── Animated counter ─────────────────────────── */
 function Counter({ target, suffix = '' }) {
@@ -52,17 +53,17 @@ export default function About() {
                     viewport={{ once: true, margin: '-60px' }}
                     whileHover={{ y: -4 }}
                 >
-                    <h3 style={{ fontSize: '1.75rem', marginBottom: '1.5rem', fontFamily: 'var(--font-display)' }}>
+                    <h3 className="about-card-title">
                         The Technical Core
                     </h3>
-                    <p style={{ color: 'var(--text-dim)', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-                        Based in Mumbai and architecting at <strong style={{ color: 'var(--text-strong)' }}>Comzent Technologies</strong>,
+                    <p className="about-card-text">
+                        Based in Mumbai and architecting at <strong className="about-card-text-strong">Comzent Technologies</strong>,
                         I bridge the gap between complex enterprise requirements and fluid human interaction.
                     </p>
-                    <p style={{ color: 'var(--text-dim)', fontSize: '1.1rem', lineHeight: 1.8 }}>
+                    <p className="about-card-text" style={{ marginBottom: 0 }}>
                         My focus lies in building highly resilient, modular applications using{' '}
-                        <strong style={{ color: 'var(--accent)' }}>Jetpack Compose</strong> and{' '}
-                        <strong style={{ color: 'var(--accent)' }}>Flutter</strong>. I advocate for SOLID principles,
+                        <strong className="about-card-text-accent">Jetpack Compose</strong> and{' '}
+                        <strong className="about-card-text-accent">Flutter</strong>. I advocate for SOLID principles,
                         Clean Architecture, and performance-first design.
                     </p>
                 </motion.div>
@@ -77,13 +78,13 @@ export default function About() {
                     viewport={{ once: true, margin: '-60px' }}
                     whileHover={{ y: -4 }}
                 >
-                    <h4 style={{ color: 'var(--accent)', fontSize: '3.75rem', fontWeight: 800, lineHeight: 1 }}>
+                    <h4 className="about-stat-title accent">
                         <Counter target={2} suffix="+" />
                     </h4>
-                    <span style={{ fontWeight: 600, display: 'block', marginTop: '0.6rem', fontSize: '1rem' }}>
+                    <span className="about-stat-label">
                         Years Experience
                     </span>
-                    <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem', marginTop: '0.75rem' }}>
+                    <p className="about-stat-desc">
                         Building high-impact mobile solutions in production.
                     </p>
                 </motion.div>
@@ -98,13 +99,13 @@ export default function About() {
                     viewport={{ once: true, margin: '-60px' }}
                     whileHover={{ y: -4 }}
                 >
-                    <h4 style={{ color: 'var(--secondary)', fontSize: '3.75rem', fontWeight: 800, lineHeight: 1 }}>
+                    <h4 className="about-stat-title secondary">
                         <Counter target={20} suffix="+" />
                     </h4>
-                    <span style={{ fontWeight: 600, display: 'block', marginTop: '0.6rem', fontSize: '1rem' }}>
+                    <span className="about-stat-label">
                         REST APIs Integrated
                     </span>
-                    <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem', marginTop: '0.75rem' }}>
+                    <p className="about-stat-desc">
                         Seamlessly wired across 2+ enterprise apps.
                     </p>
                 </motion.div>
@@ -119,29 +120,29 @@ export default function About() {
                     viewport={{ once: true, margin: '-60px' }}
                     whileHover={{ y: -4 }}
                 >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1.5rem' }}>
+                    <div className="about-edu-container">
                         <div>
-                            <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem', fontFamily: 'var(--font-display)' }}>
+                            <h3 className="about-edu-title">
                                 Education
                             </h3>
-                            <p style={{ color: 'var(--text-strong)', fontWeight: 600, marginBottom: '0.25rem' }}>
+                            <p className="about-edu-degree">
                                 Master of Computer Applications (MCA)
                             </p>
-                            <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>
+                            <p className="about-edu-school">
                                 Sardar Patel Institute of Technology · Andheri, Mumbai · 2020 – 2024
                             </p>
                         </div>
-                        <div style={{ textAlign: 'right' }}>
+                        <div className="about-edu-cgpa-container">
                             <motion.p
+                                className="about-edu-cgpa"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                                style={{ color: 'var(--accent)', fontSize: '2.25rem', fontWeight: 800, lineHeight: 1 }}
                             >
                                 8.0 CGPA
                             </motion.p>
-                            <p style={{ color: 'var(--text-dim)', fontSize: '0.88rem', marginTop: '0.35rem' }}>
+                            <p className="about-edu-year">
                                 Class of 2024
                             </p>
                         </div>

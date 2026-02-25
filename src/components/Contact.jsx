@@ -2,22 +2,20 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Button from './ui/Button';
 import { FaEnvelope, FaWhatsapp, FaLinkedinIn, FaGithub } from 'react-icons/fa';
+import './Contact.css';
 
 /* ── Floating orb ─────────────────────────────── */
 function Orb({ size, color, x, y, duration, delay }) {
     return (
         <motion.div
+            className="contact-orb"
             animate={{ y: [0, -18, 0], scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }}
             transition={{ duration, delay, repeat: Infinity, ease: 'easeInOut' }}
             style={{
-                position: 'absolute',
                 width: size,
                 height: size,
-                borderRadius: '50%',
                 background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
-                filter: 'blur(36px)',
                 left: x, top: y,
-                pointerEvents: 'none',
             }}
         />
     );
@@ -27,6 +25,7 @@ function Orb({ size, color, x, y, duration, delay }) {
 function SocialLink({ icon, href, label, delay = 0 }) {
     return (
         <motion.a
+            className="contact-social-link"
             href={href}
             target="_blank"
             rel="noopener noreferrer"
@@ -36,7 +35,6 @@ function SocialLink({ icon, href, label, delay = 0 }) {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -6, color: 'var(--accent)', scale: 1.15 }}
-            style={{ fontSize: '1.7rem', color: 'var(--text-dim)' }}
         >
             {icon}
         </motion.a>
@@ -55,15 +53,7 @@ const fadeUp = {
 export default function Contact() {
     return (
         <section id="contact" className="section container">
-            <div style={{
-                position: 'relative',
-                background: 'linear-gradient(180deg, var(--surface) 0%, transparent 100%)',
-                padding: '6rem 2rem',
-                borderRadius: 'var(--radius-lg)',
-                border: '1px solid var(--border)',
-                textAlign: 'center',
-                overflow: 'hidden',
-            }}>
+            <div className="contact-wrapper">
 
                 {/* Animated background orbs */}
                 <Orb size="280px" color="rgba(56,189,248,.12)" x="50%" y="60%" duration={6} delay={0} />
@@ -72,58 +62,27 @@ export default function Contact() {
 
                 {/* Content */}
                 <motion.div
+                    className="contact-content"
                     variants={container}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, margin: '-80px' }}
-                    style={{ position: 'relative', zIndex: 1 }}
                 >
-                    <motion.p
-                        variants={fadeUp}
-                        style={{
-                            fontSize: '0.75rem',
-                            fontWeight: 700,
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.14em',
-                            color: 'var(--accent)',
-                            marginBottom: '1.25rem',
-                        }}
-                    >
+                    <motion.p className="contact-eyebrow" variants={fadeUp}>
                         Get In Touch
                     </motion.p>
 
-                    <motion.h2
-                        variants={fadeUp}
-                        style={{
-                            fontFamily: 'var(--font-display)',
-                            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-                            lineHeight: 1.05,
-                            fontWeight: 700,
-                            marginBottom: '1.5rem',
-                        }}
-                    >
+                    <motion.h2 className="contact-title" variants={fadeUp}>
                         Ready to <span className="gradient-text">Collaborate?</span>
                     </motion.h2>
 
-                    <motion.p
-                        variants={fadeUp}
-                        style={{
-                            color: 'var(--text-dim)',
-                            fontSize: '1.1rem',
-                            maxWidth: '520px',
-                            margin: '0 auto 3.5rem',
-                            lineHeight: 1.8,
-                        }}
-                    >
+                    <motion.p className="contact-desc" variants={fadeUp}>
                         I'm open to full-time roles, freelance projects, and technical collaborations.
                         Let's build something great together.
                     </motion.p>
 
                     {/* CTA buttons */}
-                    <motion.div
-                        variants={fadeUp}
-                        style={{ display: 'flex', justifyContent: 'center', gap: '1.25rem', flexWrap: 'wrap', marginBottom: '4rem' }}
-                    >
+                    <motion.div className="contact-cta-wrapper" variants={fadeUp}>
                         <Button href="mailto:rathodvikramk382@gmail.com" variant="primary" icon={<FaEnvelope />}>
                             Send Email
                         </Button>
@@ -133,14 +92,11 @@ export default function Contact() {
                     </motion.div>
 
                     {/* Divider */}
-                    <motion.div
-                        variants={fadeUp}
-                        style={{ borderTop: '1px solid var(--border)', paddingTop: '2.5rem' }}
-                    >
-                        <p style={{ color: 'var(--text-dim)', fontSize: '0.8rem', marginBottom: '1.5rem', letterSpacing: '0.06em' }}>
+                    <motion.div className="contact-divider-container" variants={fadeUp}>
+                        <p className="contact-social-label">
                             FIND ME ON
                         </p>
-                        <div style={{ display: 'flex', justifyContent: 'center', gap: '2.5rem' }}>
+                        <div className="contact-social-links">
                             <SocialLink icon={<FaLinkedinIn />} href="https://www.linkedin.com/in/vikram-rathod-438442289/" label="LinkedIn" delay={0} />
                             <SocialLink icon={<FaGithub />} href="https://github.com/VikramRathodk" label="GitHub" delay={0.1} />
                             <SocialLink icon={<FaEnvelope />} href="mailto:rathodvikramk382@gmail.com" label="Email" delay={0.2} />
