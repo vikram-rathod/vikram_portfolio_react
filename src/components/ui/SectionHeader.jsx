@@ -1,20 +1,31 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const SectionHeader = ({ title, subtitle, align = 'left' }) => {
+export default function SectionHeader({ title, subtitle, align = 'left' }) {
     return (
-        <motion.div
-            className="section-header"
-            style={{ textAlign: align }}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-        >
-            <h2 className="section-title gradient-text">{title}</h2>
-            {subtitle && <p className="section-subtitle">{subtitle}</p>}
-        </motion.div>
-    );
-};
+        <div className="section-header" style={{ textAlign: align }}>
+            <motion.h2
+                className="section-title gradient-text"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            >
+                {title}
+            </motion.h2>
 
-export default SectionHeader;
+            {subtitle && (
+                <motion.p
+                    className="section-subtitle"
+                    style={{ margin: align === 'center' ? '0 auto' : undefined }}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                >
+                    {subtitle}
+                </motion.p>
+            )}
+        </div>
+    );
+}

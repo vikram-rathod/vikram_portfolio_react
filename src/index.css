@@ -1,34 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS
+───────────────────────────────────────────── */
 :root {
-    /* Semantic Colors - Modern Oceanic & Nebula */
     --canvas: #020617;
     --surface: #0f172a;
-    --surface-accent: #1e293b;
+    --surface-hi: #1e293b;
     --text-strong: #f8fafc;
     --text-dim: #94a3b8;
     --accent: #38bdf8;
-    /* Cyan */
     --accent-glow: rgba(56, 189, 248, 0.15);
     --primary: #818cf8;
-    /* Indigo */
     --secondary: #c084fc;
-    /* Violet */
-
     --border: rgba(255, 255, 255, 0.06);
     --border-bright: rgba(255, 255, 255, 0.12);
-
     --font-main: 'Plus Jakarta Sans', sans-serif;
     --font-display: 'Space Grotesk', sans-serif;
-
     --radius-sm: 0.5rem;
-    --radius-md: 1rem;
+    --radius: 1rem;
     --radius-lg: 2rem;
-
-    --transition-base: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* {
+/* ─────────────────────────────────────────────
+   GLOBAL RESET
+───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -37,11 +37,11 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
-    background-color: var(--canvas);
+    background: var(--canvas);
 }
 
 body {
-    background-color: var(--canvas);
+    background: var(--canvas);
     color: var(--text-strong);
     font-family: var(--font-main);
     line-height: 1.6;
@@ -49,7 +49,27 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Utilities --- */
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--canvas);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, .2);
+    border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, .45);
+}
+
+/* ─────────────────────────────────────────────
+   LAYOUT UTILITIES
+───────────────────────────────────────────── */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -61,6 +81,9 @@ body {
     position: relative;
 }
 
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY UTILITIES
+───────────────────────────────────────────── */
 .gradient-text {
     background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
     -webkit-background-clip: text;
@@ -68,28 +91,49 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* --- Interactive Backgrounds --- */
-.bg-nebula {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background:
-        radial-gradient(circle at 0% 0%, rgba(129, 140, 248, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
-    pointer-events: none;
+/* ─────────────────────────────────────────────
+   BENTO GRID  (layout only – no visual styles)
+───────────────────────────────────────────── */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
 }
 
-.glass-panel {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+/* ─────────────────────────────────────────────
+   HERO LAYOUT
+───────────────────────────────────────────── */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-/* --- Navbar --- */
+.hero-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.hero-p {
+    font-size: 1.125rem;
+    color: var(--text-dim);
+    max-width: 580px;
+    margin-bottom: 3.5rem;
+    line-height: 1.8;
+}
+
+/* ─────────────────────────────────────────────
+   NAVBAR
+───────────────────────────────────────────── */
 .navbar {
     position: fixed;
     top: 1.5rem;
@@ -104,9 +148,15 @@ body {
     align-items: center;
     padding: 0 2rem;
     border-radius: var(--radius-lg);
-    background: rgba(2, 6, 23, 0.8);
-    backdrop-filter: blur(16px);
+    background: rgba(2, 6, 23, 0.75);
+    backdrop-filter: blur(18px);
     border: 1px solid var(--border);
+    transition: border-color .4s ease, box-shadow .4s ease;
+}
+
+.navbar.scrolled {
+    border-color: rgba(56, 189, 248, .18);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, .45);
 }
 
 .nav-links {
@@ -115,30 +165,49 @@ body {
 }
 
 .nav-link {
+    position: relative;
     text-decoration: none;
     color: var(--text-dim);
-    font-size: 0.875rem;
+    font-size: .875rem;
     font-weight: 500;
-    transition: var(--transition-base);
+    transition: color .25s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 99px;
+    transition: width .3s var(--ease-out-expo);
 }
 
 .nav-link:hover {
     color: var(--accent);
 }
 
-/* --- Components --- */
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ─────────────────────────────────────────────
+   BUTTON
+───────────────────────────────────────────── */
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.875rem 2.25rem;
-    border-radius: 9999px;
+    gap: .75rem;
+    padding: .875rem 2.25rem;
+    border-radius: 99px;
     font-weight: 600;
-    font-size: 0.9375rem;
+    font-size: .9375rem;
     text-decoration: none;
-    transition: var(--transition-base);
     cursor: pointer;
     border: none;
+    transition: transform .25s var(--ease-out-expo), box-shadow .25s ease;
 }
 
 .btn-primary {
@@ -148,7 +217,7 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px -8px var(--accent-glow);
+    box-shadow: 0 14px 28px -8px rgba(56, 189, 248, .35);
 }
 
 .btn-outline {
@@ -158,79 +227,134 @@ body {
 }
 
 .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: var(--text-strong);
+    background: rgba(255, 255, 255, .04);
+    border-color: rgba(255, 255, 255, .3);
+    transform: translateY(-2px);
 }
 
-/* --- Cards & Grid --- */
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.5rem;
-}
-
+/* ─────────────────────────────────────────────
+   CARD  (base visual + hover – animation via framer)
+───────────────────────────────────────────── */
 .bento-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius);
     padding: 2.5rem;
-    transition: var(--transition-base);
     position: relative;
     overflow: hidden;
+    transition: border-color .35s ease, box-shadow .35s ease;
+}
+
+.bento-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%),
+            rgba(56, 189, 248, .04), transparent 40%);
+    opacity: 0;
+    transition: opacity .4s ease;
+    pointer-events: none;
 }
 
 .bento-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -20px var(--accent-glow);
+    border-color: rgba(56, 189, 248, .22);
+    box-shadow: 0 20px 48px -20px rgba(56, 189, 248, .12);
 }
 
-/* --- Hero --- */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.bento-card:hover::before {
+    opacity: 1;
 }
 
-.hero-h1 {
+/* ─────────────────────────────────────────────
+   SECTION HEADER
+───────────────────────────────────────────── */
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.section-title {
     font-family: var(--font-display);
-    font-size: clamp(3.5rem, 10vw, 7rem);
-    line-height: 0.9;
-    letter-spacing: -0.04em;
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
-    margin-bottom: 2rem;
+    letter-spacing: -.02em;
+    margin-bottom: 1rem;
 }
 
-.hero-p {
-    font-size: 1.25rem;
+.section-subtitle {
     color: var(--text-dim);
-    max-width: 600px;
-    margin-bottom: 3.5rem;
+    font-size: 1.05rem;
+    max-width: 540px;
+    line-height: 1.75;
 }
 
-/* --- Timeline --- */
-.timeline-container {
+/* ─────────────────────────────────────────────
+   TIMELINE LAYOUT
+───────────────────────────────────────────── */
+.timeline-track {
     padding-left: 2rem;
     border-left: 1px solid var(--border);
     max-width: 900px;
     margin: 0 auto;
-}
-
-.timeline-item {
     position: relative;
-    padding-bottom: 2rem;
 }
 
-/* --- Responsive --- */
-@media (max-width: 968px) {
-    .navbar {
-        font-size: 0.8rem;
-        gap: 1rem;
+/* ─────────────────────────────────────────────
+   BACKGROUND NEBULA  (pure CSS animated)
+───────────────────────────────────────────── */
+.bg-nebula {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bg-nebula::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -15%;
+    width: 65vw;
+    height: 65vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(129, 140, 248, .07) 0%, transparent 65%);
+    animation: nebulaDrift 20s ease-in-out infinite;
+}
+
+.bg-nebula::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -15%;
+    width: 55vw;
+    height: 55vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, .07) 0%, transparent 65%);
+    animation: nebulaDrift 26s ease-in-out infinite reverse;
+}
+
+@keyframes nebulaDrift {
+    0% {
+        transform: translate(0, 0) scale(1);
     }
 
+    33% {
+        transform: translate(40px, -28px) scale(1.07);
+    }
+
+    66% {
+        transform: translate(-18px, 18px) scale(.95);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width: 968px) {
     .nav-links {
         display: none;
     }
@@ -241,6 +365,10 @@ body {
     }
 
     .hero-h1 {
-        font-size: 4rem;
+        font-size: 3.5rem;
+    }
+
+    .section-subtitle {
+        max-width: 100%;
     }
 }
