@@ -1,16 +1,13 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { CustomCursor, Konami } from './components/ui';
+import { Navbar, Footer } from './components/layout';
+import { Hero, About, Skills, Experience, Projects, Testimonials, Github, Contact } from './components/sections';
 
 function App() {
     return (
         <div className="app">
+            <CustomCursor />
+            <Konami />
             <div className="bg-nebula" />
             <Navbar />
             <main>
@@ -19,6 +16,8 @@ function App() {
                 <Skills />
                 <Experience />
                 <Projects />
+                <Testimonials />
+                <Github />
                 <Contact />
             </main>
             <Footer />

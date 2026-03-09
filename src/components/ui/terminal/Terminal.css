@@ -1,0 +1,146 @@
+.terminal-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.terminal-window {
+    width: 650px;
+    max-width: 100%;
+    height: 480px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    pointer-events: auto;
+    font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+.terminal-header {
+    background: rgba(30, 41, 59, 0.95);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: grab;
+}
+
+.terminal-header:active {
+    cursor: grabbing;
+}
+
+.terminal-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.term-btn {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: transparent;
+    transition: color 0.2s ease;
+}
+
+.terminal-header:hover .term-btn {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.term-btn.close {
+    background: #ff5f56;
+}
+
+.term-btn.min {
+    background: #ffbd2e;
+}
+
+.term-btn.max {
+    background: #27c93f;
+}
+
+.terminal-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-right: 48px;
+    /* Offset actions width for centering */
+    user-select: none;
+}
+
+.terminal-body {
+    padding: 16px;
+    flex-grow: 1;
+    overflow-y: auto;
+    color: #f8fafc;
+    font-size: 0.9rem;
+    cursor: text;
+}
+
+.term-line {
+    white-space: pre-wrap;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.term-line.output {
+    color: #a78bfa;
+}
+
+.term-line.input {
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+.term-input-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.term-prompt {
+    color: #34d399;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.term-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #f8fafc;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Custom Scrollbar for Terminal */
+.terminal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}

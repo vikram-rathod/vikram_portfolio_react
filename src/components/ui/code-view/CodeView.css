@@ -1,0 +1,257 @@
+.cv-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.cv-modal {
+    width: 100%;
+    max-width: 1200px;
+    height: 85vh;
+    background: #1e1e1e;
+    /* VS Code dark background */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #cccccc;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ── Header ── */
+.cv-header {
+    height: 38px;
+    background: #2d2d2d;
+    /* VS Code title bar */
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 1px solid #111;
+}
+
+.cv-mac-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.cv-mac-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cv-mac-btn.cv-close {
+    background: #ff5f56;
+}
+
+.cv-mac-btn.cv-min {
+    background: #ffbd2e;
+}
+
+.cv-mac-btn.cv-max {
+    background: #27c93f;
+}
+
+.cv-mac-btn.cv-close:hover {
+    filter: brightness(0.8);
+}
+
+.cv-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #858585;
+    margin-right: 56px;
+    user-select: none;
+}
+
+/* ── Layout ── */
+.cv-layout {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+/* ── Sidebar ── */
+.cv-sidebar {
+    width: 250px;
+    background: #252526;
+    border-right: 1px solid #181818;
+    display: flex;
+    flex-direction: column;
+}
+
+.cv-sidebar-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 12px 20px;
+    color: #858585;
+    letter-spacing: 0.5px;
+}
+
+.cv-file-tree {
+    display: flex;
+    flex-direction: column;
+}
+
+.cv-folder {
+    padding: 4px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #cccccc;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cv-file {
+    padding: 4px 20px 4px 36px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    color: #858585;
+    transition: background 0.1s, color 0.1s;
+}
+
+.cv-file:hover {
+    background: #2a2d2e;
+    color: #cccccc;
+}
+
+.cv-file.active {
+    background: #37373d;
+    color: #ffffff;
+}
+
+/* ── Editor ── */
+.cv-editor-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background: #1e1e1e;
+    overflow: hidden;
+}
+
+.cv-tabs {
+    display: flex;
+    background: #252526;
+    height: 40px;
+    border-bottom: 1px solid #111;
+}
+
+.cv-tab {
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #858585;
+    background: #2d2d2d;
+    cursor: pointer;
+    border-right: 1px solid #1e1e1e;
+}
+
+.cv-tab.active {
+    background: #1e1e1e;
+    color: #ffffff;
+    border-top: 1px solid #007acc;
+}
+
+.cv-tab-close {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    margin-left: 8px;
+}
+
+.cv-tab-close:hover {
+    opacity: 1;
+}
+
+.cv-copy-btn {
+    align-self: center;
+    margin-right: 16px;
+    background: transparent;
+    border: none;
+    color: #858585;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.cv-copy-btn:hover {
+    color: #ffffff;
+}
+
+.cv-editor-content {
+    flex-grow: 1;
+    overflow: auto;
+    font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+}
+
+/* ── Scrollbar ── */
+.cv-editor-content::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+.cv-editor-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cv-editor-content::-webkit-scrollbar-thumb {
+    background: rgba(121, 121, 121, 0.4);
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    border-radius: 99px;
+}
+
+/* ── Prism Overrides ── */
+.cv-line {
+    display: flex;
+}
+
+.cv-line:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.cv-line-number {
+    width: 30px;
+    text-align: right;
+    padding-right: 20px;
+    color: #858585;
+    user-select: none;
+}
+
+.cv-line-content {
+    padding-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .cv-modal {
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .cv-overlay {
+        padding: 0;
+    }
+
+    .cv-sidebar {
+        display: none;
+    }
+}

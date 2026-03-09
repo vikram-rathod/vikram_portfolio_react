@@ -1,0 +1,70 @@
+.github-container {
+    padding: 3rem 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color 0.4s ease;
+}
+
+.github-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+}
+
+.github-icon {
+    font-size: 1.75rem;
+    color: var(--text-strong);
+}
+
+.github-username {
+    font-size: 1.25rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text-strong);
+    flex-grow: 1;
+}
+
+.github-link {
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    border: 1px solid var(--border-bright);
+    padding: 0.4rem 1rem;
+    border-radius: 99px;
+    background: transparent;
+}
+
+.github-link:hover {
+    background: var(--accent-glow);
+    border-color: var(--accent);
+}
+
+.github-graph-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Customizing the inner chart text */
+.react-activity-calendar text {
+    fill: var(--text-dim) !important;
+}
+
+@media (max-width: 768px) {
+    .github-graph-wrapper {
+        justify-content: flex-start;
+        /* allow scroll on mobile */
+    }
+}

@@ -2,8 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function Button({ children, variant = 'primary', icon, ...props }) {
+    const isLink = Boolean(props.href);
+    const MotionTag = isLink ? motion.a : motion.button;
+
     return (
-        <motion.a
+        <MotionTag
             className={`btn btn-${variant}`}
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.97 }}
@@ -12,6 +15,6 @@ export default function Button({ children, variant = 'primary', icon, ...props }
         >
             {children}
             {icon && <span style={{ display: 'inline-flex', alignItems: 'center' }}>{icon}</span>}
-        </motion.a>
+        </MotionTag>
     );
 }
