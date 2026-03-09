@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 import SectionHeader from '../../ui/SectionHeader';
+import { CURRENTLY_LEARNING } from '../../../constants/data';
 import './About.css';
 
 /* ── Animated counter ─────────────────────────── */
@@ -89,7 +90,7 @@ export default function About() {
                     </p>
                 </motion.div>
 
-                {/* ── Stat: APIs ── */}
+                {/* ── Stat: Play Store Apps ── */}
                 <motion.div
                     className="bento-card"
                     style={{ gridColumn: 'span 4' }}
@@ -100,13 +101,13 @@ export default function About() {
                     whileHover={{ y: -4 }}
                 >
                     <h4 className="about-stat-title secondary">
-                        <Counter target={20} suffix="+" />
+                        <Counter target={3} suffix="+" />
                     </h4>
                     <span className="about-stat-label">
-                        REST APIs Integrated
+                        Apps on Play Store
                     </span>
                     <p className="about-stat-desc">
-                        Seamlessly wired across 2+ enterprise apps.
+                        Live production apps used by real enterprise clients.
                     </p>
                 </motion.div>
 
@@ -146,6 +147,42 @@ export default function About() {
                                 Class of 2024
                             </p>
                         </div>
+                    </div>
+                </motion.div>
+
+                {/* ── Currently Learning card ── */}
+                <motion.div
+                    className="bento-card"
+                    style={{ gridColumn: 'span 12' }}
+                    variants={cardVariant(0.4)}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: '-60px' }}
+                    whileHover={{ y: -4 }}
+                >
+                    <h3 className="about-card-title" style={{ marginBottom: '1.5rem' }}>
+                        Currently Learning
+                    </h3>
+                    <div className="about-learning-grid">
+                        {CURRENTLY_LEARNING.map((item, i) => (
+                            <motion.div
+                                key={item.label}
+                                className="about-learning-item"
+                                initial={{ opacity: 0, x: -12 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.1 * i, duration: 0.5 }}
+                            >
+                                <span
+                                    className="about-learning-dot"
+                                    style={{ background: item.color }}
+                                />
+                                <div>
+                                    <p className="about-learning-label" style={{ color: item.color }}>{item.label}</p>
+                                    <p className="about-learning-desc">{item.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
                 </motion.div>
 

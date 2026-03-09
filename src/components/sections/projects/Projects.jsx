@@ -7,14 +7,16 @@ import { PROJECTS } from '../../../constants/data';
 import {
     FaGithub, FaExternalLinkAlt, FaComments,
     FaTasks, FaHamburger, FaCheckCircle,
+    FaUsers, FaMobileAlt, FaGooglePlay, FaJava,
 } from 'react-icons/fa';
-import { SiKotlin, SiFlutter, SiFirebase, SiDart } from 'react-icons/si';
+import { SiKotlin, SiFlutter, SiFirebase, SiDart, SiAndroid } from 'react-icons/si';
 import './Projects.css';
 
 /* ── Icon registry ───────────────────────────── */
 const ICON_MAP = {
     FaComments, FaTasks, FaHamburger, FaCheckCircle,
-    SiKotlin, SiFlutter, SiFirebase, SiDart,
+    FaUsers, FaMobileAlt, FaJava,
+    SiKotlin, SiFlutter, SiFirebase, SiDart, SiAndroid,
 };
 
 const ICON_COLORS = {
@@ -94,9 +96,24 @@ const FeaturedProjectCard = ({ project, delay = 0 }) => (
                     >
                         <FaGithub /> GitHub
                     </motion.a>
-                    <motion.a href="#" whileHover={{ y: -2, color: project.accentColor }} className="project-link">
-                        <FaExternalLinkAlt /> Live Demo
-                    </motion.a>
+                    {project.playStore && (
+                        <motion.a
+                            href={project.playStore} target="_blank" rel="noopener noreferrer"
+                            whileHover={{ y: -2, color: '#3DDC84' }}
+                            className="project-link"
+                        >
+                            <FaGooglePlay /> Play Store
+                        </motion.a>
+                    )}
+                    {project.live && (
+                        <motion.a
+                            href={project.live} target="_blank" rel="noopener noreferrer"
+                            whileHover={{ y: -2, color: project.accentColor }}
+                            className="project-link"
+                        >
+                            <FaExternalLinkAlt /> Live Demo
+                        </motion.a>
+                    )}
                 </div>
             </div>
 
@@ -131,7 +148,7 @@ const FeaturedProjectCard = ({ project, delay = 0 }) => (
     </motion.div>
 );
 
-const SmallProjectCard = ({ project, delay = 0 }) => {
+const SmallProjectCard = ({ project, delay = 0, fullWidth = false }) => {
     const [hovered, setHovered] = useState(false);
 
     return (
@@ -142,7 +159,7 @@ const SmallProjectCard = ({ project, delay = 0 }) => {
             transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
             onHoverStart={() => setHovered(true)}
             onHoverEnd={() => setHovered(false)}
-            style={{ gridColumn: 'span 6' }}
+            style={{ gridColumn: fullWidth ? 'span 12' : 'span 6' }}
             className="bento-grid-item"
         >
             <Tilt
@@ -182,16 +199,29 @@ const SmallProjectCard = ({ project, delay = 0 }) => {
                                 whileHover={{ color: project.accentColor, y: -2 }}
                                 href={project.github} target="_blank" rel="noopener noreferrer"
                                 style={{ color: 'var(--text-dim)', fontSize: '1.25rem' }}
+                                title="GitHub"
                             >
                                 <FaGithub />
                             </motion.a>
-                            <motion.a
-                                whileHover={{ color: project.accentColor, y: -2 }}
-                                href="#"
-                                style={{ color: 'var(--text-dim)', fontSize: '1.1rem' }}
-                            >
-                                <FaExternalLinkAlt />
-                            </motion.a>
+                            {project.playStore && (
+                                <motion.a
+                                    whileHover={{ color: '#3DDC84', y: -2 }}
+                                    href={project.playStore} target="_blank" rel="noopener noreferrer"
+                                    style={{ color: 'var(--text-dim)', fontSize: '1.1rem' }}
+                                    title="Google Play Store"
+                                >
+                                    <FaGooglePlay />
+                                </motion.a>
+                            )}
+                            {project.live && (
+                                <motion.a
+                                    whileHover={{ color: project.accentColor, y: -2 }}
+                                    href={project.live} target="_blank" rel="noopener noreferrer"
+                                    style={{ color: 'var(--text-dim)', fontSize: '1.1rem' }}
+                                >
+                                    <FaExternalLinkAlt />
+                                </motion.a>
+                            )}
                         </div>
                     </div>
 
@@ -227,13 +257,18 @@ const Projects = () => {
         <section id="projects" className="section container">
             <SectionHeader
                 title="Featured Projects"
-                subtitle="Real-world mobile applications built with clean architecture, modern patterns, and production-grade standards."
+                subtitle="Production apps live on the Google Play Store — built with clean architecture, modern patterns, and real-world engineering."
             />
 
             <div className="projects-grid">
                 <FeaturedProjectCard project={featured} delay={0} />
                 {others.map((p, i) => (
-                    <SmallProjectCard key={p.id} project={p} delay={0.1 * (i + 1)} />
+                    <SmallProjectCard
+                        key={p.id}
+                        project={p}
+                        delay={0.1 * (i + 1)}
+                        fullWidth={others.length % 2 !== 0 && i === others.length - 1}
+                    />
                 ))}
             </div>
         </section>
