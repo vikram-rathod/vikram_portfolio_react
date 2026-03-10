@@ -1,0 +1,77 @@
+.achievement-toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(10, 10, 15, 0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 255, 157, 0.3);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10000;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(0, 255, 157, 0.05);
+    min-width: 280px;
+    overflow: hidden;
+}
+
+.achievement-icon {
+    font-size: 2rem;
+    background: rgba(0, 255, 157, 0.1);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.achievement-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.achievement-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #00ff9d;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.achievement-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.achievement-description {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.achievement-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: #00ff9d;
+    width: 100%;
+    animation: achievement-shrink 5s linear forwards;
+}
+
+@keyframes achievement-shrink {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}

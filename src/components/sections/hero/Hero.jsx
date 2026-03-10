@@ -4,7 +4,9 @@ import { Button, Terminal, Magnetic } from '../../ui';
 import { FaArrowRight, FaDownload, FaTerminal } from 'react-icons/fa';
 import { HERO_ROLES, SOCIAL_LINKS } from '../../../constants/data';
 import { useEffect, useState } from 'react';
+import { useAchievements, ACHIEVEMENTS } from '../../../context/AchievementContext';
 import './Hero.css';
+
 
 /* ── Typewriter hook ─────────────────────────── */
 function useTypewriter(words, speed = 80, pause = 1800) {
@@ -81,6 +83,8 @@ const PARTICLES = [
 export default function Hero() {
     const role = useTypewriter(HERO_ROLES);
     const [isTerminalOpen, setTerminalOpen] = useState(false);
+    const { unlock } = useAchievements();
+
 
     return (
         <section className="hero container">
@@ -146,6 +150,7 @@ export default function Hero() {
                             href={SOCIAL_LINKS.resume}
                             variant="outline"
                             target="_blank"
+                            onClick={() => unlock(ACHIEVEMENTS.RESUME_VIEW.id)}
                             icon={<FaDownload />}
                         >
                             Review CV
@@ -155,7 +160,10 @@ export default function Hero() {
                         <Button
                             as="button"
                             variant="outline"
-                            onClick={() => setTerminalOpen(true)}
+                            onClick={() => {
+                                setTerminalOpen(true);
+                                unlock(ACHIEVEMENTS.TERMINAL_OPEN.id);
+                            }}
                             icon={<FaTerminal />}
                             style={{ borderStyle: 'dashed', background: 'rgba(56,189,248,0.05)' }}
                         >

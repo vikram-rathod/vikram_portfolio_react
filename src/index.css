@@ -42,6 +42,22 @@
     --navbar-bg: rgba(240, 244, 248, 0.8);
 }
 
+/* ── Cyber theme override ── */
+[data-theme="cyber"] {
+    --canvas: #0b0216;
+    --surface: #1a0633;
+    --surface-hi: #2e0b5c;
+    --text-strong: #00ffcc;
+    --text-dim: #b388ff;
+    --accent: #ff00ff;
+    --accent-glow: rgba(255, 0, 255, 0.2);
+    --primary: #00ffcc;
+    --secondary: #7000ff;
+    --border: rgba(255, 0, 255, 0.2);
+    --border-bright: rgba(0, 255, 204, 0.4);
+    --navbar-bg: rgba(11, 2, 22, 0.85);
+}
+
 /* ─────────────────────────────────────────────
    GLOBAL RESET
 ───────────────────────────────────────────── */

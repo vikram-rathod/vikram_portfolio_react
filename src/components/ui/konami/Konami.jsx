@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
+import { useAchievements, ACHIEVEMENTS } from '../../../context/AchievementContext';
 
 const KONAMI_CODE = [
     'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
@@ -9,6 +10,8 @@ const KONAMI_CODE = [
 
 export default function Konami() {
     const [inputSeq, setInputSeq] = useState([]);
+    const { unlock } = useAchievements();
+
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -23,6 +26,7 @@ export default function Konami() {
 
                 if (isMatch && newSeq.length === KONAMI_CODE.length) {
                     triggerConfetti();
+                    unlock(ACHIEVEMENTS.KONAMI_CODE.id);
                     return []; // Reset after trigger
                 }
 

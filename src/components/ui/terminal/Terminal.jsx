@@ -3,7 +3,9 @@ import Draggable from 'react-draggable';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaRegSquare, FaMinus } from 'react-icons/fa';
 import { SKILL_GROUPS, PROJECTS, EXPERIENCE, SOCIAL_LINKS } from '../../../constants/data';
+import { useAchievements, ACHIEVEMENTS } from '../../../context/AchievementContext';
 import './Terminal.css';
+
 
 const WELCOME_MSG = [
     "Welcome to Vikram OS v1.0.0",
@@ -12,7 +14,9 @@ const WELCOME_MSG = [
 ];
 
 export default function Terminal({ isOpen, onClose }) {
+    const { unlock } = useAchievements();
     const [history, setHistory] = useState([]);
+
     const [input, setInput] = useState('');
     const bottomRef = useRef(null);
     const inputRef = useRef(null);
@@ -36,12 +40,14 @@ export default function Terminal({ isOpen, onClose }) {
         switch (trimmed) {
             case 'help':
                 output = `Available commands:
-  whoami    - Display basic info
-  skills    - List top tech stack
-  projects  - Show featured work
-  contact   - Get social links
-  clear     - Clear terminal
-  exit      - Close terminal`;
+  whoami        - Display basic info
+  skills        - List top tech stack
+  projects      - Show featured work
+  contact       - Get social links
+  theme cyber   - Activate high-contrast mode
+  clear         - Clear terminal
+  exit          - Close terminal`;
+
                 break;
             case 'whoami':
                 output = "Vikram Rathod\nMobile Application Developer building scalable flutter & android apps.";
@@ -59,6 +65,16 @@ export default function Terminal({ isOpen, onClose }) {
             case 'sudo rm -rf /':
                 output = "Permission denied. Nice try! 😉";
                 break;
+            case 'theme cyber':
+                document.documentElement.setAttribute('data-theme', 'cyber');
+                unlock(ACHIEVEMENTS.THEME_CYBER.id);
+                output = "Cyberpunk theme activated. [Override Successful]";
+                break;
+            case 'matrix':
+                output = "Initializing Matrix protocol...\nWake up, Neo...\n[The Matrix has you]";
+                // Just a fun text for now, could add full effect later
+                break;
+
             case 'clear':
                 setHistory([{ type: 'output', text: WELCOME_MSG.join('\n') }]);
                 setInput('');
