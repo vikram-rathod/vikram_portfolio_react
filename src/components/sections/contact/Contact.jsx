@@ -56,24 +56,16 @@ function ContactForm() {
 
     const handleChange = (e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setStatus('sending');
-        try {
-            const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                body: JSON.stringify(form),
-            });
-            if (res.ok) {
-                setStatus('success');
-                setForm({ name: '', email: '', message: '' });
-            } else {
-                setStatus('error');
-            }
-        } catch {
-            setStatus('error');
-        }
+        const subject = encodeURIComponent(`Portfolio Contact: ${form.name}`);
+        const body = encodeURIComponent(
+            `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+        );
+        window.open(`mailto:rathodvikramk382@gmail.com?subject=${subject}&body=${body}`);
+        setStatus('success');
+        setForm({ name: '', email: '', message: '' });
     };
 
     if (status === 'success') {

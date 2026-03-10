@@ -122,8 +122,6 @@ export default function Hero() {
                 {/* Name */}
                 <motion.h1 className="hero-h1" variants={fadeUp}>
                     <span className="gradient-text">Vikram Rathod</span>
-                    <br />
-                    <span style={{ opacity: 0.45 }}>Android &amp; Flutter</span>
                 </motion.h1>
 
                 {/* Typewriter role */}

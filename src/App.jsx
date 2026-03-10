@@ -1,8 +1,9 @@
 import React from 'react';
 import { CustomCursor, Konami } from './components/ui';
 import { Navbar, Footer } from './components/layout';
-import { Hero, About, Skills, Experience, Projects, Testimonials, Github, Contact } from './components/sections';
+import { Hero, About, Skills, Experience, Projects, Contact } from './components/sections';
 import AchievementToast from './components/ui/achievement-toast/AchievementToast';
+import BackgroundParticles from './components/ui/background-particles/BackgroundParticles';
 
 import { AchievementProvider } from './context/AchievementContext';
 
@@ -14,6 +15,7 @@ function App() {
                 <Konami />
                 <AchievementToast />
                 <div className="bg-nebula" />
+                <BackgroundParticles />
 
                 <Navbar />
                 <main>
@@ -22,8 +24,6 @@ function App() {
                     <Skills />
                     <Experience />
                     <Projects />
-                    <Testimonials />
-                    <Github />
                     <Contact />
                 </main>
                 <Footer />

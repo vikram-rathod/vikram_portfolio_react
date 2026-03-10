@@ -134,18 +134,7 @@ export default function About() {
                             </p>
                         </div>
                         <div className="about-edu-cgpa-container">
-                            <motion.p
-                                className="about-edu-cgpa"
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            >
-                                8.0 CGPA
-                            </motion.p>
-                            <p className="about-edu-year">
-                                Class of 2024
-                            </p>
+                            <p className="about-edu-year">Class of 2024</p>
                         </div>
                     </div>
                 </motion.div>
