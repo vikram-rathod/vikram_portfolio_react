@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd.exe /c \"where node && where npm\")",
+      "Bash(powershell.exe -Command \"node --version; npm --version\")",
+      "Bash(powershell.exe -Command \"Get-ChildItem ''C:\\\\Program Files\\\\nodejs'' -ErrorAction SilentlyContinue; Get-ChildItem ''C:\\\\Program Files \\(x86\\)\\\\nodejs'' -ErrorAction SilentlyContinue; Get-ChildItem \"\"$env:APPDATA\\\\npm\"\" -ErrorAction SilentlyContinue\")",
+      "Bash(powershell.exe -NonInteractive -Command \"& { Get-ChildItem ''C:\\\\Program Files\\\\nodejs'' -ErrorAction SilentlyContinue | Out-String }\")",
+      "Read(//c/Users/HP/AppData/Roaming/**)",
+      "Read(//c/Users/HP/**)",
+      "Bash(powershell.exe -NonInteractive -Command \"& { Get-ChildItem ''C:\\\\Users\\\\HP\\\\AppData\\\\Local\\\\nvm'' -ErrorAction SilentlyContinue | Select Name }\")",
+      "Bash(powershell.exe -NonInteractive -Command \"& { Get-Content ''C:\\\\Users\\\\HP\\\\AppData\\\\Local\\\\nvm\\\\settings.txt'' }\")",
+      "Bash(powershell.exe -NonInteractive -Command \"& { Get-ChildItem ''C:\\\\nvm4w\\\\nodejs'' -ErrorAction SilentlyContinue | Select Name }\")",
+      "Bash(powershell.exe -NonInteractive -Command \"& { ''C:\\\\Users\\\\HP\\\\AppData\\\\Local\\\\nvm\\\\v20.19.0\\\\node.exe'' --version }\")",
+      "Bash(powershell.exe -NonInteractive -Command \"& ''C:\\\\Users\\\\HP\\\\AppData\\\\Local\\\\nvm\\\\v20.19.0\\\\node.exe'' --version\")"
+    ]
+  }
+}

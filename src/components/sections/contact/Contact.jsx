@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Button from '../../ui/Button';
-import { FaEnvelope, FaWhatsapp, FaLinkedinIn, FaGithub } from 'react-icons/fa';
+import { FaEnvelope, FaWhatsapp, FaLinkedinIn, FaGithub, FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
 import { SOCIAL_LINKS } from '../../../constants/data';
 import './Contact.css';
 
@@ -50,6 +50,108 @@ const fadeUp = {
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
 };
 
+function ContactForm() {
+    const [form, setForm] = useState({ name: '', email: '', message: '' });
+    const [status, setStatus] = useState('idle'); // idle | sending | success | error
+
+    const handleChange = (e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('sending');
+        try {
+            const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify(form),
+            });
+            if (res.ok) {
+                setStatus('success');
+                setForm({ name: '', email: '', message: '' });
+            } else {
+                setStatus('error');
+            }
+        } catch {
+            setStatus('error');
+        }
+    };
+
+    if (status === 'success') {
+        return (
+            <motion.div
+                className="contact-success"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+            >
+                <FaCheckCircle className="contact-success-icon" />
+                <p className="contact-success-title">Message sent!</p>
+                <p className="contact-success-sub">I'll get back to you within 24 hours.</p>
+                <button className="contact-success-reset" onClick={() => setStatus('idle')}>Send another</button>
+            </motion.div>
+        );
+    }
+
+    return (
+        <form className="contact-form" onSubmit={handleSubmit} noValidate>
+            <div className="contact-form-row">
+                <div className="contact-form-group">
+                    <label className="contact-form-label" htmlFor="cf-name">Name</label>
+                    <input
+                        id="cf-name"
+                        className="contact-form-input"
+                        type="text"
+                        name="name"
+                        placeholder="Your name"
+                        value={form.name}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="contact-form-group">
+                    <label className="contact-form-label" htmlFor="cf-email">Email</label>
+                    <input
+                        id="cf-email"
+                        className="contact-form-input"
+                        type="email"
+                        name="email"
+                        placeholder="your@email.com"
+                        value={form.email}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+            </div>
+            <div className="contact-form-group">
+                <label className="contact-form-label" htmlFor="cf-message">Message</label>
+                <textarea
+                    id="cf-message"
+                    className="contact-form-input contact-form-textarea"
+                    name="message"
+                    placeholder="Tell me about your project or opportunity..."
+                    rows={5}
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                />
+            </div>
+            {status === 'error' && (
+                <p className="contact-form-error">Something went wrong. Please try again or email me directly.</p>
+            )}
+            <motion.button
+                type="submit"
+                className="contact-form-submit"
+                disabled={status === 'sending'}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.97 }}
+            >
+                <FaPaperPlane />
+                {status === 'sending' ? 'Sending…' : 'Send Message'}
+            </motion.button>
+        </form>
+    );
+}
+
 export default function Contact() {
     return (
         <section id="contact" className="section container">
@@ -79,9 +181,14 @@ export default function Contact() {
                         Let's build something great together.
                     </motion.p>
 
-                    {/* CTA buttons */}
-                    <motion.div className="contact-cta-wrapper" variants={fadeUp}>
-                        <Button href={SOCIAL_LINKS.email} variant="primary" icon={<FaEnvelope />}>Send Email</Button>
+                    {/* Contact form */}
+                    <motion.div variants={fadeUp}>
+                        <ContactForm />
+                    </motion.div>
+
+                    {/* Quick-reach CTA buttons */}
+                    <motion.div className="contact-cta-wrapper" variants={fadeUp} style={{ marginTop: '2rem' }}>
+                        <Button href={SOCIAL_LINKS.email} variant="outline" icon={<FaEnvelope />}>Send Email</Button>
                         <Button href={SOCIAL_LINKS.whatsapp} variant="outline" icon={<FaWhatsapp />}>WhatsApp</Button>
                     </motion.div>
 
