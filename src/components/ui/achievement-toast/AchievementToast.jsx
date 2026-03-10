@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAchievements } from '../../context/AchievementContext';
+import { useAchievements } from '../../../context/AchievementContext';
 import './AchievementToast.css';
 
 const AchievementToast = () => {
